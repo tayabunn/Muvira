@@ -1,0 +1,32 @@
+{% if settings.display_popup_newsletter %}
+<div class="newsletterwrapper" data-newsletter id="email-modal">
+  <div class="modal-overlay">
+    <div class="window-content">
+      <div class="grid__item">
+           {% if settings.pop_up_newsletter_img_show %} <img src="{{ 'popup_newsletter_img.jpg' | asset_url }}" alt="{{ settings.popup_newsletter_title }}">{% endif %}
+       </div>
+     <div class="window-box">
+           <div class="window-box-bg">
+      <div class="newsletter-title border-title">
+        <h4 class="title">{{ settings.popup_newsletter_title }}</h4>
+      </div>
+      <p class="message h6">{{ settings.popup_newsletter_message }}</p>
+      <div id="mailchimp-email-subscibe">
+        <div id="mc_embed_signup">
+          {% include 'newsletter-form' %}
+        </div>   
+        <input id="dismiss" type="checkbox" name="dismiss">
+        <label for="dismiss">
+          <span>{{ settings.form_note }}</span>
+        </label>
+          </div>
+      </div>  
+           <a class="close btn close-window" title="{{ 'general.password_page.close' | t }}">
+        {% include 'icon-close' %}
+      </a>
+     </div>
+      
+    </div>
+  </div>
+</div>
+{% endif %}

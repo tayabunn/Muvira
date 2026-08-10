@@ -1,0 +1,56 @@
+<div data-section-id="{{ section.id }}"  data-section-type="home-sidebar-category">  
+
+  {% if linklists[section.settings.linkedlist].links.size > 0 %}
+  {%- assign sidebar_linklist = section.settings.linkedlist -%}
+  {% else %}
+  {%- assign sidebar_linklist = 'main-menu' -%}
+  {% endif %}
+
+  {% if section.settings.enable_sidecategory %} 
+  <div class="widget widget_product_categories"  style ="background:{{section.settings.sidebar_bg_color}}">
+    {% if linklists[sidebar_linklist].links.size > 0 %}
+    {% if section.settings.linkedlist_title != blank %}
+    <h4><span>{{ section.settings.linkedlist_title }}</span></h4>  
+    {% endif %}
+
+    <ul class="product-categories dt-sc-toggle-frame-set">
+      {% for link in linklists[sidebar_linklist].links %}       
+      <li class="cat-item cat-item-39 cat-parent">
+        <i></i><a href="{{ link.url }}">{{ link.title | escape }}  <span>{% if link.object.all_products_count > 0 %}({{ link.object.all_products_count }}) {% else %}(0){% endif %}</span></a> 
+      </li>        
+      {% endfor %}
+    </ul>
+    {% endif  %}
+  </div>
+  {% endif %}
+</div>
+
+
+{% schema %}
+{
+"name": "Home Sidebar Category",   
+"settings": [
+{
+"type": "color",
+"id": "sidebar_bg_color",
+"label": "Bg Color",
+"default": "#fff"
+},
+{
+"type": "checkbox",
+"id": "enable_sidecategory",
+"label": "Enable category"
+},
+{
+"type": "link_list",
+"id": "linkedlist",
+"label": "Linklist"
+},
+{
+"type": "text",
+"id": "linkedlist_title",
+"label": "Heading"
+}     
+]
+}
+{% endschema %}

@@ -1,0 +1,186 @@
+  <div data-section-id="{{ section.id }}"  data-section-type="home-product-grid-type-12-b" class="home-product-grid-type-12-b">
+   
+    {%- assign collection = collections[section.settings.collection] -%}   
+     <div class="product-grid-type-12" style="float:left;width:100%;background-color:{{ section.settings.product_grid_bg }};">
+   <div class="dt-sc-hr-invisible-small"></div>
+    <div class="container-bg">
+       {% if section.settings.title != blank or section.settings.small_title != blank %}
+      <div class="border-title">
+        {% if section.settings.title != blank %}
+        <h2 class="section-header__title" style="color:{{ section.settings.title_color }};">    
+          {{ section.settings.title }}
+        </h2>
+        {% endif %}      
+        {% if section.settings.small_title != blank %}<div class="short-desc">  <p style="color:{{ section.settings.small_title_color }};">{{ section.settings.small_title }}</p></div>{% endif %}   
+      </div>
+      {% endif %}
+
+      {% assign grid_item_width = ' ' %} 
+      <ul class="grid-uniform product-grid-type__12-b {{ section.id }} owl-carousel owl-theme">
+        {% for product in collection.products %}
+        {% include 'product-grid-item', grid_item_width:grid_item_width %}          
+          {% else %}
+          {% for i in (1..section.settings.items) %}
+              {% include 'empty-row' %} 
+              {% endfor %}
+        {% endfor %}
+      </ul>
+  <div class="nav_product-grid-type__12-b {{ section.id }}"> </div>
+      
+    </div>
+
+    </div>
+      <style>
+        
+        .home-product-grid-type-12-b .nav_product-grid-type__12 a {  color:{{ section.settings.arrow_text_clr }}; }
+        .home-product-grid-type-12-b .nav_product-grid-type__12 a:hover {  color:{{ section.settings.arrow_text_hover_clr }}; }
+            {% if section.settings.heading_image_need %} .home-product-grid-type-12-b .border-title:after {  content:"";background-image:url({{ section.settings.heading_image | img_url: 'master' }});display:inline-block;background-repeat:no-repeat;width:105px;height:17px;} {% endif %}
+
+      </style>
+ 
+  <div class="dt-sc-hr-invisible-small"></div> 
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function(){   
+      var grid_type_12 = $(".product-grid-type__12-b.{{ section.id }}");
+      grid_type_12.owlCarousel({
+        loop:false,
+        margin:0,
+        nav:true,
+        navContainer: ".nav_product-grid-type__12-b.{{ section.id }}",
+        navText: ['<a class="prev"><i class="icon-arrow-left icons" ></i></a>','<a class="next"><i class="icon-arrow-right icons" ></i></a>'],
+        dots: false,
+        responsive:{
+                           0:{
+                           items:1
+                           },
+                           568:{
+                           items:2
+                           },
+                           768:{
+                           items:3
+                           },
+                           1000:{
+                           items:{{ section.settings.items }}
+                           }
+        }
+      });
+      
+  });
+      
+</script>
+{% schema %}
+{
+  "name": "Home Product Grid",
+  "class": "index-section",
+  "settings": [ 
+{
+      "type": "color",
+      "id": "product_grid_bg",
+      "label": "Bg Color",
+	  "default": "#fff"
+    },	
+{
+      "type": "checkbox",
+      "id": "heading_image_need",
+      "label": "Show Heading Image ?"
+      
+    },	
+{
+      "type": "image_picker",
+      "id": "heading_image",
+      "label": "Image",
+	  "info": "Size: 105x17"
+      
+    },
+	{
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "New arrivals"
+    },	
+	{
+      "type": "color",
+      "id": "title_color",
+      "label": "Heading Color",
+      "default": "#000"
+    },	
+	{
+      "type": "text",
+      "id": "small_title",
+      "label": "Small Heading"
+    },
+	{
+      "type": "color",
+      "id": "small_title_color",
+      "label": "Small Heading Color",
+      "default": "#000"
+    },	
+	{
+      "type": "color",
+      "id": "arrow_text_clr",
+      "label": "Arrow Text",
+ 	  "default":"#000"
+      
+    },
+	{
+      "type": "color",
+      "id": "arrow_text_hover_clr",
+      "label": "Arrow Hover Text",
+ 	  "default":"#000"
+      
+    },
+
+    {
+      "id": "collection",
+      "type": "collection",
+      "label": "Collection"
+    },
+{
+      "type": "select",
+      "id": "items",
+      "label": "Carousel Items",
+      "default": "left",
+      "options": [
+		{
+          "value": "1",
+          "label": "1"
+        },        
+		{
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        },
+		{
+          "value": "4",
+          "label": "4"
+        },
+		{
+          "value": "5",
+          "label": "5"
+        },
+		{
+          "value": "6",
+          "label": "6"
+        }
+      ],
+ 		"default": "4",
+        "info": "4"
+    }
+  
+  ],
+  "presets": [
+    {
+       "name": "Home Product Grid",
+      "category": "Collection"
+    }
+  ]
+}
+{% endschema %}
+
+
+

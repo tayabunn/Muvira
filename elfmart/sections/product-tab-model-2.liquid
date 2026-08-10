@@ -1,0 +1,437 @@
+<div data-section-id="{{ section.id }}"  data-section-type="product-tab-type-2" class="product-tab-type-2" style="float:left;width:100%;">     
+  <div class="wrapper">
+
+    <div class="full_width_tab" style="float:left;width:100%;background-color:{{ section.settings.product_grid_bg }};">    
+      <div class="grid-uniform">   
+   <div class="dt-sc-hr-invisible-small"></div>
+        <div class="container-bg">
+        {% if section.settings.alignment == 'left' %}
+        <div class="grid__item wide--one-quarter post-large--one-third large--one-half medium--grid__item product-tab-type-2-left wow fadeInLeft">
+          {% if section.settings.title_1 != blank or section.settings.text_1  %}
+            <div class="border-title">
+              {% endif %}   
+              {% if section.settings.title_1 != blank %}
+              <h2 style="color:{{ section.settings.title_1_clr }};">{{ section.settings.title_1 }}</h2>
+              {% endif %}
+              {% if section.settings.text_1 != blank %}
+              <div class="short-desc"> <p style="color:{{ section.settings.text_1_clr }};">{{ section.settings.text_1}}</p></div> 
+              {% endif %}  
+
+              {% if section.settings.title_1 != blank or section.settings.caption_1  %}
+            </div>
+            {% endif %}
+          <div class="ovrly10">   
+            {% if section.settings.image_1 != blank %}
+            <img src="{{ section.settings.image_1 | img_url: 'master' }}" alt="{{ section.settings.title_1 }}" />
+            {% else %}
+           <div style="height:660px;"> {{ 'collection-4' | placeholder_svg_tag: 'placeholder-svg' }}</div>
+
+            {% endif%}           
+
+            <div class="featured-content">       
+              {% if section.settings.image_txt != blank %}
+              <h4 style="color:{{ section.settings.image_txt_clr }};">{{ section.settings.image_txt}}</h4>    
+              {% endif %}  
+              {% if section.settings.image_title != blank %}
+              <h2 style="color:{{ section.settings.image_title_clr }};">{{ section.settings.image_title }}</h2>
+              {% endif %} 
+              <div class="collection_count">
+               {% if section.settings.count != blank %}
+              <span class="text_count" style="color:{{ section.settings.count_clr }};">{{ section.settings.count }}</span>    
+              {% endif %}  
+              {% if section.settings.text_1_count != blank %}
+              <span class="text_count text" style="color:{{ section.settings.text_1_count_clr }};">{{ section.settings.text_1_count }}</span>    
+              {% endif %}
+            </div>      
+            </div> 
+            
+              {% if section.settings.image_link != blank %}
+            <div class="image_link_txt">
+              <a class="btn" href="{{ section.settings.image_link }}">{{ section.settings.image_link_txt }}</a>
+            </div>
+              
+              {% endif%}
+                 
+
+          </div>
+
+        </div>
+        {% endif %}
+        <div class="{% if section.settings.alignment == 'none' %}grid__item {% else %} grid__item wide--three-quarters post-large--two-thirds large--one-half medium--grid__item{% endif %} wow fadeInUp">      
+          <div class="dt-sc-tabs-container-section"> 
+            
+
+            {% if section.blocks.size > 0 %} 
+            <div class="dt-sc-tabs-container"> 
+              
+              <ul class="dt-sc-tabs ">         
+                {% for block in section.blocks %} 
+                {% if block.settings.title != blank %}
+                <li><a href="#" class="tabs-{{ block.id }}"> 
+                  {% if block.settings.icon_1 != blank %}
+                  <img src="{{ block.settings.icon_1 | img_url: 'small' }}" alt="{{ block.settings.title }}" />
+                    {% else %}
+               {%- assign placeholder_image_index = forloop.index0 | modulo: 6 | plus: 1 -%}
+               {%- assign placeholder_image = 'product-' | append: placeholder_image_index -%}
+             {{ placeholder_image | placeholder_svg_tag: 'placeholder-svg dt-tab-img' }}
+                    {% endif %}
+                  <span>{{ block.settings.title }} </span></a></li>           
+                {% endif %}
+                {% endfor %}
+              </ul>
+              
+                {% for block in section.blocks %}
+                {%- assign collection = collections[block.settings.collection] -%}   
+               <div class="dt-sc-tabs-content">
+                 <ul class="tab2 {{ block.id }} owl-carousel owl-theme">
+                    {% for product in collection.products %}
+                    {% include 'product-grid-item' , grid_item_width:"" %}  
+                    {% else %}
+                    {% for i in (1..3) %}
+                    <li class="grid__item item-row {{ grid_item_width }} on-sale" id="product-{{ i }}">
+                      <div class="products">
+                        <div class="product-container">
+                          <a href="#" class="grid-link"> 
+                            {% if forloop.index == 3 %}
+                            <div class="featured-tag">
+                              <span class="badge badge--sale">
+                                <i class="fa fa-star"></i>
+                                <span class="gift-tag badge__text{% if sale_text.size > 7 %} badge__text--small{% endif %}">{{ 'products.product.sale' | t }}</span>
+                              </span>
+                            </div>{% endif %}
+ 
+                            <div class="reveal"> 
+                              {% capture current %}{% cycle 1, 2, 3, 4%}{% endcapture %}
+                              {{ 'product-apparel-' | append: current | placeholder_svg_tag: 'placeholder-svg' }} 
+                            </div>
+                          </a>
+                          <div class="ImageWrapper">
+                            <div class="product-button">
+                              <div class="button-row-1">
+                                <a href="#" class="quick-view-text"> 
+                                  <i class="zmdi zmdi-eye"></i>
+                                </a>
+                                <a href="{{ product.url }}">                      
+                                  <i class="zmdi zmdi-link"></i>
+                                </a>  
+                              </div>
+                              <div class="button-row-2">
+                                <form action="#" method="post" class="variants clearfix" id="cart-form-6529189125">
+                                  <input type="hidden" name="id" value="21661289093">
+                                  <a href="#" class="add-cart-btn"><i class="zmdi zmdi-shopping-cart"></i> </a>
+                                </form>
+                                <a href="/account/login" class="wishlist"><i class="zmdi zmdi-favorite-outline"></i></a> 
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="product-detail"> 
+                          <a href="#" class="grid-link__title">Sample title {{ i }}</a>
+
+                          <div class="grid-link__meta">
+                            <div class="product_price"> <span class="money" data-currency-usd="$320.00">$0.00</span> </div>
+                            <del class="grid-link__sale_price"><span class="money" data-currency-usd="$756.00">$0.00</span></del> </div>
+                          <span class="spr-badge" id="spr_badge_6529189125" data-rating="0.0"> 
+                            <span class="spr-starrating spr-badge-starrating"><i class="spr-icon spr-icon-star-empty" style="color: #f05315;"></i><i class="spr-icon spr-icon-star-empty" style="color: #f05315;"></i><i class="spr-icon spr-icon-star-empty" style="color: #f05315;"></i><i class="spr-icon spr-icon-star-empty" style="color: #f05315;"></i><i class="spr-icon spr-icon-star-empty" style="color: #f05315;"></i></span> <span class="spr-badge-caption"> </span> </span>
+
+                        </div>
+                      </div>
+                    </li>
+                    {% endfor %} 
+                    {% endfor %}
+                  </ul>
+                     <div class="tab_2_nav {{ block.id }} carousel-arrow"> </div>
+                </div>
+                 <script type="text/javascript">       
+                  $(document).ready(function(){
+                    var tab2 = $('.tab2.{{ block.id }}');
+                     tab2.owlCarousel({
+                      loop:false,                      
+                      nav:true,
+                      navContainer: ".tab_2_nav.{{ block.id}}",
+                      navText: ['<a class="prev active"><i class="icon-arrow-left icons" ></i></a>','<a class="next"><i class="icon-arrow-right icons" ></i></a>'],
+                      dots: false,
+                    //  autoplay: true,
+                      autoplayTimeout: 3000,
+                      responsive:{
+                                   0:{
+                                   items:1
+                                   },
+                                   568:{
+                                   items:1
+                                   },
+                                   1000:{
+                                   items:2
+                                   },
+                                     1200:{
+                                   items:3
+                                   },
+                                     1600:{
+                                 items:{{ section.settings.carousel_count }}
+                                   }
+                                   }
+                });
+                  });
+
+                </script>
+                {% endfor %}                
+              </div><!--End tabs container-->
+            {% endif %}
+          </div>    
+        </div>
+       
+        {% if section.settings.alignment == 'right' %}
+        <div class="grid__item wide--one-quarter post-large--one-third large--one-half medium--grid__item product-tab-type-2-right wow fadeInUp">
+          <div class="ovrly10">     
+            {% if section.settings.image_1 != blank %}
+            <img src="{{ section.settings.image_1 | img_url: 'master' }}" alt="{{ section.settings.title_1 }}" />
+            <div style="background:{{ section.settings.overlay_bgcolor | color_modify: 'alpha', 0.7 }};"  class="ovrly"></div>
+            {% else %}
+            <div style="height:660px;"> {{ 'collection-3' | placeholder_svg_tag: 'placeholder-svg' }}</div>
+            <div style="background:{{ section.settings.overlay_bgcolor | color_modify: 'alpha', 0.7 }};"  class="ovrly"> </div>
+            {% endif%}           
+
+            <div class="featured-content">       
+              {% if section.settings.image_txt != blank %}
+              <h4 style="color:{{ section.settings.image_txt_clr }};">{{ section.settings.image_txt}}</h4>    
+              {% endif %}  
+              {% if section.settings.image_title != blank %}
+              <h2 style="color:{{ section.settings.image_title_clr }};">{{ section.settings.image_title }}</h2>
+              {% endif %}
+               <div class="collection_count">
+              {% if section.settings.count != blank %}
+              <span class="text_count" style="color:{{ section.settings.count_clr }};">{{ section.settings.count }}</span>    
+              {% endif %}  
+              {% if section.settings.text_1_count != blank %}
+              <span class="text_count text" style="color:{{ section.settings.text_1_count_clr }};">{{ section.settings.text_1_count }}</span>    
+              {% endif %}
+            </div>
+            </div> 
+           
+               {% if section.settings.image_link != blank %}
+            <div class="image_link_txt">
+              <a class="btn" href="{{ section.settings.image_link }}">{{ section.settings.image_link_txt }}</a>
+            </div>
+              {% endif%}
+             
+
+          </div>
+
+        </div>         
+        {% endif %}
+        </div>
+           <div class="dt-sc-hr-invisible-small"></div>
+
+      </div>
+      {% for block in section.blocks %}
+      <style>
+      #shopify-section-{{section.id}}  .product-tab-type-2 .full_width_tab ul.dt-sc-tabs  li a { color:{{ section.settings.tag_clr }}; }
+      #shopify-section-{{section.id}}  .product-tab-type-2 .full_width_tab ul.dt-sc-tabs  li a.tabs-{{ block.id }}:hover,.product-tab-type-2 .full_width_tab ul.dt-sc-tabs li a.current span { color:{{ section.settings.tag_hover_clr }}; }
+       #shopify-section-{{section.id}}  .product-tab-type-2 .dt-sc-tabs-container .dt-sc-tabs li a.current.tabs-{{ block.id }}:before {
+    content: "";
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    left: 0px;
+    top: -17px;
+    background: {{ section.settings.tag_hover_clr }}; }
+  #shopify-section-{{section.id}} .product-tab-type-2 .dt-sc-tabs-container .dt-sc-tabs li a.current.tabs-{{ block.id }}:after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    border-top: 6px solid {{ section.settings.tag_hover_clr }};
+    border-right: 6px solid transparent;
+    border-left: 6px solid transparent;
+    top: -16px;
+}
+        svg.placeholder-svg.dt-tab-img{width:50px;height:50px;}
+      </style>
+      {% endfor %}
+    </div> 
+  </div>
+</div>
+<div class="dt-sc-hr-invisible-small"></div>   
+
+{% schema %}
+{
+"name": "Product Tab 2",
+"class": "index-section",
+"max_blocks": 4,
+"settings": [
+{
+      "type": "color",
+      "id": "product_grid_bg",
+      "label": "Bg Color",
+	  "default": "#fff"
+    },
+{
+"type": "text",
+"id": "title_1",
+"label": "Heading"
+},
+{
+"type": "color",
+"id": "title_1_clr",
+"label": "Heading",
+"default": "#000"
+},        
+{
+"type": "image_picker",
+"id": "image_1",
+"label": "Image",
+"info": "Size: 400x920"
+},
+{
+"type": "select",
+"id": "alignment",
+"label": "Image block alignment",
+"default": "left",
+"options": [
+{
+"value": "left",
+"label": "Left"
+},
+{
+"value": "right",
+"label": "Right"
+},
+{
+"value": "none",
+"label": "None"
+} 
+]
+},
+{
+"type": "text",
+"id": "image_title",
+"label": "Heading"
+},
+{
+"type": "color",
+"id": "image_title_clr",
+"label": "Image title",
+"default": "#fff"
+},
+{
+"type": "textarea",
+"id": "image_txt",
+"label": "Image text"
+},
+{
+"type": "color",
+"id": "image_txt_clr",
+"label": "Image text",
+"default": "#fff"
+},
+{
+"type": "text",
+"id": "image_link_txt",
+"label": "Button text"
+},
+
+{
+"type": "text",
+"id": "image_link",
+"label": "Link"
+},
+{
+"type": "text",
+"id": "count",
+"label": "Number"
+},
+{
+"type": "color",
+"id": "count_clr",
+"label": "Number",
+"default": "#fff"
+},
+{
+"type": "text",
+"id": "text_1_count",
+"label": "Numbered Text"
+},
+{
+"type": "color",
+"id": "text_1_count_clr",
+"label": "Numbered Text",
+"default": "#fff"
+},
+
+{
+"type": "color",
+"id": "tag_clr",
+"label": "Tag Color",
+"default": "#000"
+},
+{
+"type": "color",
+"id": "tag_hover_clr",
+"label": "Tag Hover Color",
+"default": "#fff"
+},
+{
+"type": "select",
+"id": "carousel_count",
+"label": "Carousel items",
+"default": "4",
+"options": [
+{
+"value": "2",
+"label": "2"
+},
+{
+"value": "3",
+"label": "3"
+},
+{
+"value": "4",
+"label": "4"
+} 
+]
+}
+
+
+],
+"blocks": [	
+{
+"type": "text_block",
+"name": "Column",
+"settings": [
+{
+"type": "image_picker",
+"id": "icon_1",
+"label": "Image",
+"info": "Size: 50x50"
+},
+
+{
+"type": "text",
+"id": "title",
+"label": "Collection Name",
+"default": "Tab Name"
+},	
+
+
+{
+"id": "collection",
+"type": "collection",
+"label": "Collection"
+}
+]
+}
+],
+"presets": [
+{
+"name": "Product Tab 2",
+"category": "Collection",
+"blocks": [
+{
+"type": "text_block"
+}        
+]
+}
+]
+}
+{% endschema %}

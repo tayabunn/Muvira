@@ -1,0 +1,223 @@
+<div data-section-id="{{ section.id }}"  data-section-type="category section" class="category-section">
+ {% if section.blocks.size > 0 %}    
+  <div class="grid-uniform section-seven" style="position:relative;float:left;width:100%;background-color:{{ section.settings.category_bg }};">
+        <div class="container-bg">
+   <div class="dt-sc-hr-invisible-small"></div>
+
+      <div class="grid__item wow fadeInUp"  data-wow-delay="{{ settings.time_lazy_load }}ms">
+         <div class="border-title">
+        {% if section.settings.title != blank %}
+        <h2 style="color:{{ section.settings.title_color }};">{{ section.settings.title }}</h2>
+        {% endif %}
+        </div>
+        <div id="category-car" class="category-section owl-carousel owl-theme">
+          {% for block in section.blocks %}
+          
+          <div class="item-{{ forloop.index }}">
+            {% if block.settings.client_img != blank %}
+            <a href="{{ block.settings.client_link }}"> 
+              <img src="{{ block.settings.client_img | img_url: "master"  }}" alt="{{ block.settings.client_heading }}" /></a>
+           {% else %}          
+          <div class="item"><a href="#">
+                {%- assign placeholder_image_index = forloop.index0 | modulo: 6 | plus: 1 -%}
+                {%- assign placeholder_image = 'product-' | append: placeholder_image_index -%}
+                {{ placeholder_image | placeholder_svg_tag: 'placeholder-svg' }}
+
+          </a></div>
+           {% endif %}  
+           {% if block.settings.client_heading != blank %}
+            <h4><a style="" href="{{ block.settings.client_link }}"> {{ block.settings.client_heading }}</a></h4>
+        {% endif %} 
+          </div>
+         
+         
+          
+         
+          {% endfor %}
+        </div>
+          <div class="nav_category {{ section.id }}"> </div>
+
+      </div>
+   <div class="dt-sc-hr-invisible-small"></div>
+    </div>
+  </div>
+  <div class="dt-sc-hr-invisible-small"></div>
+  {% endif %} 
+</div>
+
+<style>
+   {% for block in section.blocks %}
+  .category-section .item-{{forloop.index }} h4 a {color:{{ block.settings.heading-color }}; }
+    .category-section .item-{{forloop.index }}:hover h4 a {color:{{ block.settings.heading-hover-color }}; }
+
+  {% endfor %}
+  
+</style>
+
+<script type="text/javascript">
+
+
+$(document).ready(function() {
+jQuery("#category-car").owlCarousel({   
+       loop:true,
+        margin:10,
+        nav:true,
+        navContainer: ".nav_category.{{ section.id }}",
+        navText: ['<a class="prev"><i class="icon-arrow-left icons" ></i></a>','<a class="next"><i class="icon-arrow-right icons" ></i></a>'],
+        dots: false,
+        responsive:{
+            0:{
+                items:1
+            },
+           568:{
+                items:3
+            },
+            1000:{
+                items:{{ section.settings.items }}
+            }
+        }
+    });
+  });
+
+
+
+
+</script>
+
+{% schema %}
+{
+"name": "Category Images",
+"class": "index-section",
+"settings": [
+{
+      "type": "color",
+      "id": "category_bg",
+      "label": "Bg Color",
+	  "default": "#fff"
+    },	
+	{
+"type": "text",
+"id": "title",
+"label": "Heading"
+},
+{
+"type": "color",
+"id": "title_color",
+"label": "Color",
+ "default": "#000"
+},
+{
+      "type": "select",
+      "id": "items",
+      "label": "Carousel Items",
+      "default": "left",
+      "options": [
+		{
+          "value": "1",
+          "label": "1"
+        },        
+		{
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        },
+		{
+          "value": "4",
+          "label": "4"
+        },
+		{
+          "value": "5",
+          "label": "5"
+        },
+		{
+          "value": "6",
+          "label": "6"
+        }
+      ],
+ 		"default": "4",
+        "info": "4"
+    }
+
+],
+"blocks": [
+{
+"type": "Image",
+"name":"Img",
+"settings": [
+{
+"type": "image_picker",
+"id": "client_img",
+"label": "Image",
+"info": "Size: 300x300"
+},
+{
+"type": "text",
+"id": "client_heading",
+"label": "Heading",
+"default": "#fff"
+},
+{
+"type": "color",
+"id": "heading-color",
+"label": "Heading",
+"default": "#000"
+},
+{
+"type": "color",
+"id": "heading-hover-color",
+"label": "Heading Hover",
+"default": "#000"
+},
+{
+"type": "url",
+"id": "client_link",
+"label": "Link URL"
+}
+]
+}
+],
+
+"presets": [
+{
+"name": "Category Images",
+"category": "Image",
+      "blocks": [
+        {
+          "type": "Image"
+        },
+        {
+          "type": "Image"
+        },
+		{
+          "type": "Image"
+        },
+		{
+          "type": "Image"
+        },
+        {
+          "type": "Image"
+        },
+		{
+          "type": "Image"
+        },{
+          "type": "Image"
+        },
+        {
+          "type": "Image"
+        },
+		{
+          "type": "Image"
+        }
+ 		
+      ]
+}
+]
+}
+{% endschema %}
+
+
+
+

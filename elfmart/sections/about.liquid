@@ -1,0 +1,918 @@
+
+
+
+<div data-section-id="{{ section.id }}"  data-section-type="About section" class="about-us">
+  {% if section.settings.show_5_section != blank %}
+  <div class="grid-uniform section-two">
+    <div class="container">
+      <div class="grid__item">
+        <div class="grid__item wide--one-quarter post-large--one-quarter large--one-quarter medium--one-half small-grid__item ">
+          <div class="number-block">
+            {% if section.settings.section_4_iconclsone != blank %}
+            <div class="number-icon">
+              <span class=" {{section.settings.section_4_iconclsone }}"> </span>
+            </div>
+            {% endif %}
+            <div class="number-detail">
+              {% if section.settings.section_4_numberone != blank %}
+              <span> {{section.settings.section_4_numberone }}</span>
+              {% endif %}   
+              {% if section.settings.section_4_titleone != blank %}
+              <h5>{{section.settings.section_4_titleone }}</h5>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        <div class="grid__item wide--one-quarter post-large--one-quarter large--one-quarter medium--one-half small-grid__item ">
+          <div class="number-block">
+            {% if section.settings.section_4_iconclstwo != blank %}
+            <div class="number-icon">
+              <span class=" {{section.settings.section_4_iconclstwo }}"> </span>
+            </div>
+            {% endif %}
+            <div class="number-detail">
+              {% if section.settings.section_4_numbertwo != blank %}
+              <span> {{section.settings.section_4_numbertwo }}</span>
+              {% endif %}
+              {% if section.settings.section_4_titletwo != blank %}
+              <h5>{{section.settings.section_4_titletwo }}</h5>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        <div class="grid__item wide--one-quarter post-large--one-quarter large--one-quarter medium--one-half small-grid__item ">
+          <div class="number-block">
+            {% if section.settings.section_4_iconclsthree != blank %}
+            <div class="number-icon">
+              <span class=" {{section.settings.section_4_iconclsthree }}"> </span>
+            </div>
+            {% endif %}
+            <div class="number-detail">
+              {% if section.settings.section_4_numberthree != blank %}
+              <span> {{section.settings.section_4_numberthree }}</span>
+              {% endif %}
+              {% if section.settings.section_4_titlethree != blank %}
+              <h5>{{section.settings.section_4_titlethree }}</h5>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+
+        <div class="grid__item wide--one-quarter post-large--one-quarter large--one-quarter medium--one-half small-grid__item ">
+          <div class="number-block">
+            {% if section.settings.section_4_iconclsfour != blank %}
+            <div class="number-icon">
+              <span class=" {{section.settings.section_4_iconclsfour }}"> </span>
+            </div>
+            {% endif %}
+            <div class="number-detail">
+              {% if section.settings.section_4_numberfour != blank %}
+              <span> {{section.settings.section_4_numberfour }}</span>
+              {% endif %}
+
+              {% if section.settings.section_4_titlefour != blank %}
+              <h5>{{section.settings.section_4_titlefour }}</h5>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+
+  {% if section.settings.show_4_section %}
+  <div class="section-one">
+    <div class="container">
+      <div class="grid__item inner-row" >        
+
+        <div class="grid__item wide--one-half post-large--one-half large--one-half">
+          <div class="img-section">   
+              {% if  section.settings.imgsection_1_img != blank %}
+            <img src="{{  section.settings.imgsection_1_img | img_url: "master" }}" alt="{{ section.settings.imgsection_1_img }}" />   
+                {% else %}
+            <div style="width:600px;height:360px;">    {{ 'collection-1' | placeholder_svg_tag:'placeholder-svg' }}</div>
+                 {% endif %}
+          </div>
+        </div>
+       
+        <div class="grid__item wide--one-half post-large--one-half large--one-half">
+          <div class="img-section-desc right-section">
+            {% if section.settings.imgsection_1_desc != blank %}
+            <p>{{section.settings.imgsection_1_desc}}</p>  
+            {% endif %}
+            {% if section.settings.author_1_name != blank %}
+            <span>{{section.settings.author_1_name}}</span>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+     
+      <div class="grid__item inner-row" >
+        <div class="grid__item wide--one-half post-large--one-half large--one-half">
+          <div class="img-section-desc left-section">
+            {% if section.settings.imgsection_2_desc != blank %}
+            <p>{{section.settings.imgsection_2_desc}}</p>  
+            {% endif %}
+            {% if section.settings.author_2_name != blank %}
+            <span>{{section.settings.author_2_name}}</span>
+            {% endif %}
+          </div>
+        </div>        
+       
+        <div class="grid__item wide--one-half post-large--one-half large--one-half">
+          <div class="img-section">          
+             {% if  section.settings.imgsection_2_img != blank %}
+            <img src="{{  section.settings.imgsection_2_img | img_url: "master" }}" alt="{{ section.settings.imgsection_2_img }}" />   
+             {% else %}
+             <div style="width:600px;height:360px;">     {{ 'collection-2' | placeholder_svg_tag:'placeholder-svg' }}</div>
+                 {% endif %}
+          </div>
+        </div>
+       
+      </div>
+      
+    </div>
+  </div>
+  {% endif %}
+
+
+  {% if section.settings.section_four %}
+  <div class="grid-uniform section-four">
+    <div class="container">     
+      {% if  section.settings.section_4_title  != blank %}
+      <div class="main-title">       
+        <h2 style="color:{{section.settings.section_4_title_color  }}">{{section.settings.section_4_title}}</h2>       
+        {% if  section.settings. section_4_subtitle  != blank %}
+        <h4 style="color:{{section.settings.section_4_subtitle_color}}">{{section.settings.section_4_subtitle}}</h4>
+        {% endif %}
+        {% if  section.settings.section_4_img  != blank %}
+        <img src="{{  section.settings.section_4_img  | img_url: "master" }}" alt="{{ section.settings.section_4_imgheading }}" />
+        {% endif %}
+      </div>
+      {% endif %}            
+      <div class="grid__item">
+        <div class="time-line-wrapper">
+          <div class="grid__item wide--one-quarter post-large--one-quarter large--one-quarter medium--one-half small-grid__item">
+            <div class="timeline-block">
+             
+              <div class="timeline-img">
+                 {% if  section.settings.timeline_1_img != blank %}
+                <img src="{{  section.settings.timeline_1_img | img_url: "master" }}" alt="{{ section.settings.timeline_1_imgheading }}" />
+                   {% else %}
+                   {{ 'collection-5' | placeholder_svg_tag: 'placeholder-svg' }}
+                    {% endif %}
+              </div>
+             
+              {% if  section.settings.timeline_1_year  != blank %}
+              <h3>{{section.settings.timeline_1_year}}</h3>
+              {% endif %}
+              {% if  section.settings.timeline_1_desc  != blank %}
+              <p>{{section.settings.timeline_1_desc}}</p>
+              {% endif %}
+            </div>
+          </div>
+          <div class="grid__item wide--one-quarter post-large--one-quarter large--one-quarter medium--one-half small-grid__item">
+            <div class="timeline-block timeline-bottom">
+              {% if  section.settings.timeline_2_year  != blank %}
+              <h3>{{section.settings.timeline_2_year}}</h3>
+              {% endif %}
+              {% if  section.settings.timeline_2_desc  != blank %}
+              <p>{{section.settings.timeline_2_desc}}</p>
+              {% endif %}
+             
+              <div class="timeline-img">
+             {% if  section.settings.timeline_2_img != blank %}    
+                <img src="{{  section.settings.timeline_2_img | img_url: "master" }}" alt="{{ section.settings.timeline_2_imgheading }}" />
+                  {% else %}
+                 {{ 'collection-6' | placeholder_svg_tag: 'placeholder-svg' }}
+               {% endif %}
+              </div>
+              
+            </div>
+          </div>
+
+          <div class="grid__item wide--one-quarter post-large--one-quarter large--one-quarter medium--one-half small--grid__item">
+            <div class="timeline-block">
+            
+              <div class="timeline-img">
+                  {% if  section.settings.timeline_3_img != blank %}
+                <img src="{{  section.settings.timeline_3_img | img_url: "master" }}" alt="{{ section.settings.timeline_3_imgheading }}" />
+                  {% else %}
+                   {{ 'collection-3' | placeholder_svg_tag: 'placeholder-svg' }}
+                    {% endif %}
+              </div>
+            
+              {% if  section.settings.timeline_3_year  != blank %}
+              <h3>{{section.settings.timeline_3_year}}</h3>
+              {% endif %}
+              {% if  section.settings.timeline_3_desc  != blank %}
+              <p>{{section.settings.timeline_3_desc}}</p>
+              {% endif %}
+            </div>
+          </div>
+          <div class="grid__item wide--one-quarter post-large--one-quarter large--one-quarter medium--one-half small--grid__item">
+            <div class="timeline-block timeline-bottom">
+              {% if  section.settings.timeline_4_year  != blank %}
+              <h3>{{section.settings.timeline_4_year}}</h3>
+              {% endif %}
+              {% if  section.settings.timeline_4_desc  != blank %}
+              <p>{{section.settings.timeline_4_desc}}</p>
+              {% endif %}
+             
+              <div class="timeline-img">
+                 {% if  section.settings.timeline_4_img != blank %}
+                <img src="{{  section.settings.timeline_4_img | img_url: "master" }}" alt="{{ section.settings.timeline_4_imgheading }}" />
+                  {% else %}
+                   {{ 'collection-4' | placeholder_svg_tag: 'placeholder-svg' }}
+                    {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="dt-sc-hr-invisible-large"></div>
+  {% endif %} 
+
+  {% if section.settings.show_4_block != blank %}
+  <div class="grid-uniform section-five">
+    <div class="container">
+      {% if section.settings.team_maintitle != blank %}
+      <div class="border-title">
+        <h2 style="color:{{section.settings.team_maintitlecolor}};">  {{section.settings.team_maintitle }}</h2>
+        <span class="sep" style="background:{{section.settings.team_bordercolor}};"></span>
+        {% if section.settings.team_desc != blank %} 
+        <p style="color:{{section.settings.team_desccolor}};">{{section.settings.team_desc}}</p> 
+         <div class="invisible-small"></div>     
+      </div>
+      {% endif %}
+      {% endif %}
+      <div class="grid__item">
+        {% if section.blocks.size > 0 %}  
+        {% for block in section.blocks %}         
+        <div class="grid__item wide--one-quarter post-large--one-quarter large--one-quarter medium--one-half small-grid__item">
+          <div class="team-wrapper">
+            <div class="team-img">
+              {% if block.settings.team_6_image != blank %}
+                
+              <img src="{{ block.settings.team_6_image | img_url: '1024x1024' }}" alt="" title="" /> 
+                
+                 {% else %}
+             {%- assign placeholder_image_index = forloop.index0 | modulo: 6 | plus: 1 -%}
+              {%- assign placeholder_image = 'collection-' | append: placeholder_image_index -%}
+                <div style="width:270px;height:420px;">{{ placeholder_image | placeholder_svg_tag: 'placeholder-svg dt-placeholder' }}</div>
+    
+              {% endif %}
+              <ul class="social-icon">
+                {% if block.settings.social_1_icon != blank %}
+                <li><a href="{{ block.settings.social_1_link }}"><i class="{{block.settings.social_1_icon }}" aria-hidden="true"></i></a></li>
+                {% endif %}
+                {% if block.settings.social_2_icon != blank %}
+                <li><a href="{{ block.settings.social_2_link }}"><i class="{{block.settings.social_2_icon }}" aria-hidden="true"></i></a></li>
+                {% endif %}
+                {% if block.settings.social_3_icon != blank %}
+                <li><a href="{{ block.settings.social_3_link }}"><i class="{{block.settings.social_3_icon }}" aria-hidden="true"></i></a></li>
+                {% endif %}
+                {% if block.settings.social_4_icon != blank %}
+                <li><a href="{{ block.settings.social_4_link }}"><i class="{{block.settings.social_4_icon }}" aria-hidden="true"></i></a></li>
+                {% endif %}
+              </ul> 
+            </div>
+            <div class="team-detail">
+              {% if block.settings.team_title != blank %}
+              <h5 style ="color:{{block.settings.team_title_color}}">{{block.settings.team_title }}</h5>
+              {% endif %}
+              {% if block.settings.team_subtitle != blank %}
+              <h6 style ="color:{{block.settings.team_subtitle_color}}">{{block.settings.team_subtitle }}</h6>
+              {% endif %}
+            </div>
+          </div>
+        </div>        
+        {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  {% endif %}
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+
+  .about-us  .border-title .sep{background:{{ section.settings.block_5_titleborder }};}
+  .about-us .block5 .support_icon { color: {{ section.settings.block_5_icon_txt_color }};}
+  .about-us .icon-section .icon{color:{{section.settings.icon_color}};}
+  .about-us .icon-section  .icon-heading h3{color:{{section.settings.icon_headingcolor}};}
+  .about-us .icon-desc p{color:{{section.settings.icon_desccolor}};}
+  .about-us .social-icon a{background:{{section.settings.team_socialiconbgcolor}};color:{{section.settings.team_socialiconcolor}};}
+  .about-us .social-icon a:hover{background:{{section.settings.team_socialiconhoverbgcolor}};color:{{section.settings.team_socialiconhovercolor}};}
+  .about-us .block5 .desc::after {background: {{section.settings.block_5_icon_description_color}};}
+ 
+  
+  
+   
+  .about-us .grid__item.post-large--one-half.icon-left {border-right:1px solid {{section.settings.section_2_txtcolor}};}
+
+  .about-us .icon-wrapper  h4 , .aboutus .icon-wrapper  p{color:{{section.settings.section_2_txtcolor}};}
+
+  .about-us .icon{background:{{section.settings.section_2_txtcolor}};}
+
+  .about-us .icon-wrapper  h4 , .vedabout-seven .icon-wrapper  p{color:{{section.settings.section_2_txtcolor}};}
+
+  .about-us .icon-wrapper span {color:{{section.settings.section_2_iconcolor}};}
+
+  .about-us .icon-wrapper:hover .icon{background:{{section.settings.section_2_iconcolor}};}
+
+  .about-us .icon-wrapper:hover .icon span{color:{{section.settings.section_2_txtcolor}};}
+
+  .about-us .time-line-wrapper::after {background: {{section.settings.timelinebordercolor}};}
+
+  .about-us .timeline-img::before { background: {{section.settings.timelinebordercolor}};}
+
+  .about-us .time-line-wrapper::after {background: {{section.settings.timelinebordercolor}};}
+
+  .about-us .timeline-img::after { background: #fff;border: 1px solid {{section.settings.timelinebordercolor}};}
+
+  .about-us .timeline-block:hover .timeline-img::after{background:{{section.settings.timtlineline_hovercolor}};}
+
+  .about-us .timeline-block:hover .timeline-img img{box-shadow: 0 0 3px 0 {{section.settings.timtlineline_hovercolor}};}
+
+  .about-us .timeline-block h3::after {background: {{section.settings.timtlineline_hovercolor}};}
+  
+  
+  
+  
+  .about-us .img-section-desc{background:{{section.settings.imgsection_1_bg}}; }
+
+  .about-us .img-section-desc.right-section{box-shadow: 20px 20px 20px 0 {{section.settings.imgsection_1_box}};}
+
+  .about-us .img-section-desc.left-section{box-shadow: -20px 20px 20px 0 {{section.settings.imgsection_2_box}};background:{{section.settings.imgsection_2_bg}};}
+
+  .about-us .section-one .img-section-desc p{color:{{section.settings.imgsection_desccolor }};}
+
+  .about-us .section-one .img-section-desc span{color:{{section.settings.imgsectionauthorcolor }};}
+  
+  
+   .about-us .section-one .img-section-desc p{color:{{section.settings.imgsection_desccolor }};}
+
+  .about-us .section-one .img-section-desc span{color:{{section.settings.imgsectionauthorcolor }};}
+  
+  .about-us .section-two{background:{{section.settings.section_4_bgcolor}};}
+
+  .about-us .number-block:hover .number-icon{background:{{section.settings.section_4_iconborder}};}
+
+
+  .about-us .number-icon::after{  box-shadow: 0 0 0 1px {{section.settings.section_4_iconborder}};}
+
+  .about-us .number-icon span {color:{{section.settings.section_4_iconcolor}};}
+
+  .about-us .number-icon{background:{{section.settings.section_4_iconbgcolor}};}
+ 
+
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% schema %}
+{
+"name": "About-us Page",
+"settings": [
+{
+"type": "header",
+"content": "Block 1"
+},
+{
+"type": "header",
+"content": "Section One"
+},
+{
+"type": "checkbox",
+"id": "show_5_section",
+"label": "Display  This Section"
+},
+{
+"type": "text",
+"id": "section_4_iconclsone",
+"label": "Icon class",
+"default": " fa fa-newspaper-o"
+},
+{
+"type": "text",
+"id": "section_4_numberone",
+"label": "Number",
+"default": "94+"
+},
+{
+"type": "text",
+"id": "section_4_titleone",
+"label": "Heading",
+"default": "title..."
+},
+
+
+{
+"type": "text",
+"id": "section_4_iconclstwo",
+"label": "Icon class",
+"default": " fa fa-graduation-cap"
+},
+{
+"type": "text",
+"id": "section_4_numbertwo",
+"label": "Number",
+"default": "94+"
+},
+{
+"type": "text",
+"id": "section_4_titletwo",
+"label": "Heading",
+"default": "title..."
+},
+
+{
+"type": "text",
+"id": "section_4_iconclsthree",
+"label": "Icon class",
+"default": " fa fa-user"
+},
+{
+"type": "text",
+"id": "section_4_numberthree",
+"label": "Number",
+"default": "94+"
+},
+{
+"type": "text",
+"id": "section_4_titlethree",
+"label": "Heading",
+"default": "title..."
+},
+{
+"type": "text",
+"id": "section_4_iconclsfour",
+"label": "Icon class",
+"default": "fa fa-bullseye"
+},
+{
+"type": "text",
+"id": "section_4_numberfour",
+"label": "Number",
+"default": "94+"
+},
+{
+"type": "text",
+"id": "section_4_titlefour",
+"label": "Heading",
+"default": "title..."
+},
+{
+"type": "color",
+"id": "section_4_bgcolor",
+"label": "Bg color",
+"default": "#000"
+},
+{
+"type": "color",
+"id": "section_4_iconbgcolor",
+"label": "Icon bg color",
+"default": "#000"
+},
+{
+"type": "color",
+"id": "section_4_iconcolor",
+"label": "Icon  color",
+"default": "#000"
+},
+{
+"type": "color",
+"id": "section_4_iconborder",
+"label": "Icon border color",
+"default": "#000"
+},
+
+
+
+
+
+
+
+
+{
+"type": "checkbox",
+"id": "show_4_section",
+"label": "Display  This Section"
+},
+
+{
+"type": "image_picker",
+"id": "imgsection_1_img",
+"label": "Image",
+"info": "Size: 700x450"
+},
+{
+"type": "text",
+"id": "imgsection_1_imgheading",
+"label": "Img alt text"
+},
+{
+"type": "textarea",
+"id": "imgsection_1_desc",
+"label": "Desc"
+},
+{
+"type": "text",
+"id": "author_1_name",
+"label": "Author Name"
+},
+{
+"type": "color",
+"id": "imgsection_1_bg",
+"default": "#000",
+"label": "Bg Color"
+},
+{
+"type": "color",
+"id": "imgsection_1_box",
+"default": "#000",
+"label": "Box Shadow"
+},
+{
+"type": "color",
+"id": "imgsection_desccolor",
+"default": "#000",
+"label": "Desc COlor"
+},
+{
+"type": "color",
+"id": "imgsectionauthorcolor",
+"default": "#000",
+"label": "Author Color"
+},
+
+{
+"type": "image_picker",
+"id": "imgsection_2_img",
+"label": "Image",
+"info": "Size: 700x450"
+},
+{
+"type": "text",
+"id": "imgsection_2_imgheading",
+"label": "Img alt text"
+},
+{
+"type": "textarea",
+"id": "imgsection_2_desc",
+"label": "Desc"
+},
+{
+"type": "text",
+"id": "author_2_name",
+"label": "Author Name"
+},
+{
+"type": "color",
+"id": "imgsection_2_bg",
+"default": "#000",
+"label": "Bg Color"
+},
+{
+"type": "color",
+"id": "imgsection_2_box",
+"default": "#000",
+"label": "Box Shadow"
+},
+{
+"type": "header",
+"content": "Block 3"
+},
+{
+"type": "checkbox",
+"id": "section_four",
+"label": "Display  This Section"
+},
+{
+"type": "text",
+"id": "section_4_title",
+"label": "Heading"
+},
+{
+"type": "color",
+"id": "section_4_title_color",
+"default": "#000",
+"label": "Heading Color"
+},
+{
+"type": "text",
+"id": "section_4_subtitle",
+"label": "Sub Heading"
+},
+{
+"type": "color",
+"id": "section_4_subtitle_color",
+"default": "#000",
+"label": "Sub Heading Color"
+},
+{
+"type": "image_picker",
+"id": "section_4_img",
+"label": "Image"
+},
+{
+"type": "text",
+"id": "section_4_imgheading",
+"label": "Image"
+},
+{
+"type": "image_picker",
+"id": "timeline_1_img",
+"label": "Image",
+  "info":"130x130"
+},
+{
+"type": "text",
+"id": "timeline_1_imgheading",
+"label": "Text"
+},
+{
+"type": "text",
+"id": "timeline_1_year",
+"label": "Year"
+},
+{
+"type": "textarea",
+"id": "timeline_1_desc",
+"label": "Description"
+},
+{
+"type": "image_picker",
+"id": "timeline_2_img",
+"label": "Image",
+  "info":"130x130"
+},
+{
+"type": "text",
+"id": "timeline_2_imgheading",
+"label": "Text"
+},
+{
+"type": "text",
+"id": "timeline_2_year",
+"label": "Year"
+},
+{
+"type": "textarea",
+"id": "timeline_2_desc",
+"label": "Description"
+},
+{
+"type": "image_picker",
+"id": "timeline_3_img",
+"label": "Image",
+  "info":"130x130"
+},
+{
+"type": "text",
+"id": "timeline_3_imgheading",
+"label": "Text"
+},
+{
+"type": "text",
+"id": "timeline_3_year",
+"label": "Year"
+},
+{
+"type": "textarea",
+"id": "timeline_3_desc",
+"label": "Description"
+},
+{
+"type": "image_picker",
+"id": "timeline_4_img",
+"label": "Image",
+  "info":"130x130"
+},
+{
+"type": "text",
+"id": "timeline_4_imgheading",
+"label": "Text"
+},
+{
+"type": "text",
+"id": "timeline_4_year",
+"label": "Year"
+},
+{
+"type": "textarea",
+"id": "timeline_4_desc",
+"label": "Description"
+},
+{
+"type": "color",
+"id": "timelinebordercolor",
+"default": "#000",
+"label": "Timeline Border and hover Color"
+},
+{
+"type": "color",
+"id": "timtlineline_hovercolor",
+"default": "#000",
+"label": "Time line hover color"
+},
+{
+"type": "header",
+"content": "Block 4"
+},
+{
+"type": "checkbox",
+"id": "show_4_block",
+"label": "Display  This Section"
+},
+{
+"type": "text",
+"id": "team_maintitle",
+"label": "Heading",
+"default": "Heading"
+},
+{
+"type": "color",
+"id": "team_maintitlecolor",
+"default": "#000",
+"label": "Team Title Color"
+},
+{
+"type": "color",
+"id": "team_bordercolor",
+"default": "#000",
+"label": "Team Border Color"
+},
+{
+"type": "textarea",
+"id": "team_desc",
+"label": "Desc",
+"default": "Heading"
+},
+{
+"type": "color",
+"id": "team_desccolor",
+"default": "#000",
+"label": "Team Desc Color"
+},
+{
+"type": "color",
+"id": "team_socialiconcolor",
+"label": "Icon color",
+"default": "#000"
+},
+{
+"type": "color",
+"id": "team_socialiconbgcolor",
+"label": "Icon bg color",
+"default": "#000"
+},
+{
+"type": "color",
+"id": "team_socialiconhovercolor",
+"label": "Icon hover color",
+"default": "#000"
+},
+{
+"type": "color",
+"id": "team_socialiconhoverbgcolor",
+"label": "Icon hover bg color",
+"default": "#000"
+},
+{
+"type": "color",
+"id": "team_overlaycolor",
+"label": "Overlay Color",
+"default": "#000"
+}
+
+],
+
+
+"blocks": [
+{
+"type": "text",
+"name":"Team Section",
+"settings": [
+{
+"type": "image_picker",
+"id": "team_6_image",
+"label": "Image",
+"info": "Size: 270x420"
+},
+{
+"type": "text",
+"id": "team_title",
+"label": "Heading",
+"default": "Heading"
+},
+{
+"type": "color",
+"id": "team_title_color",
+"label": "Heading Color",
+"default": "#000"
+},
+{
+"type": "text",
+"id": "team_subtitle",
+"label": "Sub Heading",
+"default": "Heading"
+},
+{
+"type": "color",
+"id": "team_subtitle_color",
+"label": "Heading Color",
+"default": "#000"
+},
+{
+"type": "text",
+"id": "social_1_icon",
+"label": "Social Icon",
+"default": "class name"
+},
+{
+"type": "text",
+"id": "social_1_link",
+"label": "Social Link"
+},
+{
+"type": "text",
+"id": "social_2_icon",
+"label": "Social Icon",
+"default": "class name"
+},
+{
+"type": "text",
+"id": "social_2_link",
+"label": "Social Link"
+},
+{
+"type": "text",
+"id": "social_3_icon",
+"label": "Social Icon",
+"default": "class name"
+},
+{
+"type": "text",
+"id": "social_3_link",
+"label": "Social Link"
+},
+{
+"type": "text",
+"id": "social_4_icon",
+"label": "Social Icon",
+"default": "class name"
+},
+{
+"type": "text",
+"id": "social_4_link",
+"label": "Social Link"
+}
+]
+}
+]
+
+}
+{% endschema %}
+
+{% stylesheet %}
+
+
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

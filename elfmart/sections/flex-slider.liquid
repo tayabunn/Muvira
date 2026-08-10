@@ -1,0 +1,354 @@
+<section class="main-slideshow">
+  <div class="flexslider">
+    <ul class="slides">          
+     {% for block in section.blocks %} 
+      {% assign i = forloop.index %}
+       <style>        
+         .flexslider .btn.btn-{{ i }} { color:{{ block.settings.button-color_text }};background:{{ block.settings.button-bg_text }}; }
+         .flexslider .btn.btn-{{ i }}:hover { background:{{ block.settings.button-hover-bg_text }};color:{{ block.settings.button-hover-text }}; }
+      </style>
+        {% if block.settings.display_slideshow %}
+      <li class="slide image_slider">
+        {% if block.settings.slideshow_img != blank %}
+        <img src="{{ block.settings.slideshow_img | img_url:'master' }}" alt="{{ block.settings.image_alt }}" />
+          {% else %}
+               {%- assign placeholder_image_index = forloop.index0 | modulo: 2 | plus: 1 -%}
+                {%- assign placeholder_image = 'lifestyle-' | append: placeholder_image_index -%}
+               <div style="height:550px;"> {{ placeholder_image | placeholder_svg_tag: 'placeholder-svg' }}</div>
+        {% endif %}
+        <div class="slide-des" 
+             {% if block.settings.text_align_slide == 'center' %}
+             style="width:100%;margin:auto; text-align:{{ block.settings.text_align_slide }}"
+             {% elsif block.settings.text_align_slide == 'right' %}
+             style="left: auto;right:4%; text-align:{{ block.settings.text_align_slide}}"
+             {% else %}
+              style="left: 10%; text-align:{{ settings.text_align_slide }}"
+             {% endif %}
+             >
+          {% if block.settings.slide-heading != blank %}
+          <h2 class="slide-heading" style="
+                                           {% if block.settings.slide_heading_size != blank %} 
+                                           font-size: {{block.settings.slide_heading_size}}px;                                           
+                                           {% endif %}
+                                           {% if block.settings.slide_heading_color != blank %} 
+                                           color: {{block.settings.slide_heading_color}};                                          
+                                           {% endif %}"
+              >
+            {{ block.settings.slide-heading}}
+          </h2>
+          
+         
+          {% endif %}
+          
+          {% if block.settings.slide-text != blank %}
+          <p class="slide-text" style="{% if block.settings.text_align_slide == 'center' %} margin:auto; {% endif %} {% if block.settings.text_align_slide == 'right' %} float:right; {% endif %}
+                                       {% if block.settings.slide_text_size != blank %} 
+                                       font-size: {{block.settings.slide_text_size}}px;                                      
+                                       {% endif %}
+                                       {% if block.settings.slide_text_color != blank %} 
+                                       color: {{block.settings.slide_text_color}};                                      
+                                       {% endif %}"
+             >
+            {{ block.settings.slide-text}}
+          </p>
+          {% endif %}
+          {% if block.settings.button-text != blank %}
+          <a href="{{ block.settings.image_link }}" title="" class="slide-button btn btn-{{ i }}">
+            <span>{{ block.settings.button-text}}</span>          
+          </a>
+          {% endif %}
+        </div>       
+      </li>
+       {% endif %}
+      {% endfor %}
+    </ul>
+ <div class="dt-sc-hr-invisible-small"></div>
+  </div><!-- /.flexslider -->
+</section> <!-- /#slideshow.row -->
+<script>
+$(function() {
+	var slider, // Global slider value to force playing and pausing by direct access of the slider control
+		canSlide = true; // Global switch to monitor video state
+ 
+	// Load the YouTube API. For some reason it's required to load it like this
+	var tag = document.createElement('script');
+    tag.src = "//www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+ 
+    // Setup a callback for the YouTube api to attach video event handlers
+	window.onYouTubeIframeAPIReady = function(){
+		// Iterate through all videos
+		$('.flexslider iframe').each(function(){
+			// Create a new player pointer; "this" is a DOMElement of the player's iframe
+			var player = new YT.Player(this, {
+				playerVars: {
+					autoplay: 0
+				}
+			});
+ 
+			// Watch for changes on the player
+			player.addEventListener("onStateChange", function(state){
+				switch(state.data)
+				{
+					// If the user is playing a video, stop the slider
+					case YT.PlayerState.PLAYING:
+						slider.flexslider("stop");
+						canSlide = false;
+						break;
+					// The video is no longer player, give the go-ahead to start the slider back up
+					case YT.PlayerState.ENDED:
+					case YT.PlayerState.PAUSED:
+						slider.flexslider("play");
+						canSlide = true;
+						break;
+				}
+			});
+
+			$(this).data('player', player);
+		});
+	}
+ 
+	// Setup the slider control
+	slider = $(".flexslider")
+		.flexslider({
+	    	animation: "{{ section.settings.slideshow_transition }}",
+			easing: "swing",
+			slideshowSpeed: {{ section.settings.slideshow_speed }},
+			animationSpeed: 900,
+			pauseOnHover: true,
+			pauseOnAction: true,
+			touch: true,
+			video: true,
+			controlNav: true,
+			directionNav: true,
+			keyboardNav: true,
+			{% if section.settings.slideshow_transition == "slide" %}
+			animationLoop: false,
+			{% endif %}
+			slideshow: true,
+			useCSS: false,
+	    	// Before you go to change slides, make sure you can!
+	    	before: function(){			    		
+	    		if(!canSlide)
+	    			slider.flexslider("stop");
+	    	}
+		});
+
+  
+    jQuery('.flexslider li img').click(function(){
+      var url = jQuery(this).attr('data-url');
+      if (url.length > 0) {window.location.href = url;}
+    });
+});
+</script>
+
+
+
+{% schema %}
+  {
+  "name": "Slider",
+  "max_blocks": 50,
+  "settings": [
+  {
+  "type": "paragraph",
+  "content": "IMPORTANT: For best results, upload images that are at least 1880px wide. Try to keep your slideshow images the same size."
+  },
+  {
+  "type": "checkbox",
+  "id": "display_slideshow",
+  "label": "Enable slideshow?",
+  "default": true
+  },
+  {
+  "type": "select",
+  "id": "slideshow_speed",
+  "label": "Show slideshow images for",
+  "options": [
+  {
+  "value": "8000",
+  "label": "8 seconds"
+  },
+  {
+  "value": "7000",
+  "label": "7 seconds"
+  },
+  {
+  "value": "6000",
+  "label": "6 seconds"
+  },
+  {
+  "value": "5000",
+  "label": "5 seconds"
+  },
+  {
+  "value": "4000",
+  "label": "4 seconds"
+  },
+  {
+  "value": "3000",
+  "label": "3 seconds"
+  },
+  {
+  "value": "2000",
+  "label": "2 seconds"
+  },
+  {
+  "value": "1000",
+  "label": "1 seconds"
+  }
+  ],
+  "default": "5000"
+  },
+  {
+  "type": "select",
+  "id": "slideshow_transition",
+  "label": "Slideshow transition effect:",
+  "options": [
+  {
+  "value": "slide",
+  "label": "Slide"
+  },
+  {
+  "value": "fade",
+  "label": "Fade"
+  }
+  ],
+  "default": "fade"
+  }
+
+  ],
+
+  "blocks" : [
+  {
+  "type": "image",
+  "name": "Slider",
+  "settings": [
+  {
+
+  "type": "checkbox",
+  "id": "display_slideshow",
+  "label": "Display Slideshow",
+  "default": true
+  },
+  {
+  "type": "image_picker",
+  "id": "slideshow_img",
+  "label": "Slideshow Image",
+ "info": "Size: 1920x780"
+  },
+  {
+  "type": "text",
+  "id": "image_link",
+  "label": "URL for Image click"
+  },
+  {
+  "type": "text",
+  "id": "image_alt",
+  "label": "ALT text for Image",
+  "default": "Lorem a Cosmo"
+  },
+  {
+  "type": "text",
+  "id": "slide-heading",
+  "label": "Heading for Image",
+  "default": "Lorem a Cosmo"
+  },
+  {
+  "type": "color",
+  "id": "slide_heading_color",
+  "label": "Heading color for Image",
+  "default": "#000",
+  "info": "Default Value: #000"
+  },
+  {
+  "type": "text",
+  "id": "slide_heading_size",
+  "label": "Heading size for Image",
+  "default": "40",
+  "info": "Default Value: 40"
+  },
+  {
+  "type": "text",
+  "id": "slide-text",
+  "label": "Text for Image",
+  "default": "Pellentesque posuere orci lobortis scelerisque blandit. Donec id tellus lacinia an, tincidunt risus ac, consequat velit. Quisquemos sodales suscipit tortor ditaemcos condimentum lacus meleifend menean viverra auctor blanditos comodous."
+  },
+  {
+  "type": "color",
+  "id": "slide_text_color",
+  "label": "Text color for Image",
+  "default": "#2d2d2d",
+  "info": "Default Value: #2d2d2d"
+  },
+  {
+  "type": "text",
+  "id": "slide_text_size",
+  "label": "Text size for Image",
+  "default": "12",
+  "info": "Default Value: 12"
+  },
+  {
+  "type": "text",
+  "id": "button-text",
+  "label": "Button Text",
+  "default": "Shop The Collection"
+  },
+  {
+  "type": "color",
+  "id": "button-color_text",
+  "label": "Button Text",
+  "default": "#e4e4e4"
+  },
+  {
+  "type": "color",
+  "id": "button-bg_text",
+  "label": "Button Bg",
+  "default": "#e4e4e4"
+  },
+  {
+  "type": "color",
+  "id": "button-hover-bg_text",
+  "label": "Button Hover Bg",
+  "default": "#e4e4e4"
+  },
+  {
+  "type": "color",
+  "id": "button-hover-text",
+  "label": "Button Hover Text",
+  "default": "#e4e4e4"
+  },
+  {
+  "type": "select",
+  "id": "text_align_slide",
+  "label": "Text Align Slideshow",
+  "options": [
+  {
+  "value": "center",
+  "label": "Center"
+  },
+  {
+  "value": "left",
+  "label": "Left"
+  },
+  {
+  "value": "right",
+  "label": "Right"
+  }
+  ],
+  "default": "center",
+  "info": "Default Value: Center"
+  }    
+  ]
+}
+],
+
+  "presets": [
+  {
+  "name": "Slider",
+  "category": "image"
+  }
+  ]
+  }
+  {% endschema %}
+

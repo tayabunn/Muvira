@@ -1,0 +1,176 @@
+{% if section.settings.show_featured_post %}
+<div data-section-id="{{ section.id }}"  data-section-type="home-sidebar-featured-post" class="home-sidebar-featured-post">
+  <div class="blog-post widget" style ="background:{{section.settings.sidebar_bg_color}}">
+    <div class="grid">  
+
+      {% if section.settings.title != blank %}
+      <h4 class="section-header__title"><span>{{ section.settings.title }}</span></h4>
+      {% endif %}  
+
+      <div class="nav_blog"> </div>
+      <div class="home-sidebar-featured-post__inner blog-section owl-carousel owl-theme">           
+
+        {% if blogs[section.settings.pick_featured_blog].articles.size > 0 %}  
+        <ul class="type3__items">             
+          {% for article in blogs[section.settings.pick_featured_blog].articles  %}   
+          {% assign test_val =  forloop.index | modulo:3 %}            
+          <li class="article-item grid__item {{ blog.article.size }}">
+            <div class="article">
+              <div class="home-blog-image">
+                {% if article.image %}
+                <img src="{{ article.image.src | img_url: 'large' }}" alt="{{ article.title }}" />            
+                {% endif %}
+              </div>
+              <div class="blog-description">
+
+                {% if section.settings.show_featured_date %}   
+                <p class="blog-date">
+                  <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}"><span class="date">{{ article.published_at | date: '%b' }} {{ article.published_at | date: '%d' }} , {{ article.published_at | date: '%Y' }}</span></time>    		 
+
+                </p>
+                {% endif %}  
+
+                <div class="home-blog-content blog-detail">
+
+                  <h4><a href="{{ article.url }}">{{ article.title }}</a></h4>
+
+                  {% if section.settings.blog_description %} 
+                  <p>{{ article.content | strip_html | truncate: 100 }}</p> 
+                  {% endif %}
+                </div>
+
+              </div>
+            </div>   
+          </li>
+          {% unless forloop.first  %}
+          {% unless forloop.last  %}
+          {% if test_val == 0 %}
+        </ul>
+        <ul class="type3__items">                       
+          {% endif %}
+          {% endunless %}
+          {% endunless %}
+          {% endfor %}        
+        </ul>                 
+        {% else %}
+        <ul class="type3__items">
+          {% for i in (1..3) %}        
+          <li class="article-item grid__item {{ forloop.index }}">
+            <div class="article">
+              <div class="home-blog-image"> 
+                {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+              </div>
+              <div class="blog-description">    
+                <p class="blog-date">
+                  <time datetime="2016-11-01"><span class="date">Jan 01 , 2017</span></time>
+                </p>
+                <div class="home-blog-content blog-detail">
+                  <h4><a href="#">Sample post {{ i }}</a></h4>
+                  <i class="fa fa-user" aria-hidden="true"></i> <span> Author Name</span>
+                  <p>Sample description {{ i }}</p>
+                   </div>
+              </div>
+            </div>
+          </li>
+            {% endfor %}
+        </ul>
+        <ul class="type3__items">
+          {% for i in (1..3) %}        
+          <li class="article-item grid__item {{ forloop.index }}">
+            <div class="article">
+              <div class="home-blog-image"> 
+                {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+              </div>
+              <div class="blog-description">    
+                <p class="blog-date">
+                  <time datetime="2016-11-01"><span class="date">Jan 01 , 2017</span></time>
+                </p>
+                <div class="home-blog-content blog-detail">
+                  <h4><a href="#">Sample post {{ i }}</a></h4>
+                  <i class="fa fa-user" aria-hidden="true"></i> <span> Author Name</span>
+                  <p>Sample description {{ i }}</p>
+ </div>
+              </div>
+            </div>
+          </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        
+      </div>
+
+    </div>
+  </div>
+
+
+</div>
+{% endif %}
+
+{% schema %}
+{
+"name": "Home Sidebar Post",
+"settings": [
+{
+"type": "checkbox",
+"id": "show_featured_post",
+"label": "Enable"
+},
+{
+"type": "color",
+"id": "sidebar_bg_color",
+"label": "Bg Color",
+"default": "#fff"
+},
+{
+"type": "text",
+"id": "title",
+"label": "Heading",	
+"default": "Featred posts"
+},
+
+{
+"type": "blog",
+"id": "pick_featured_blog",
+"label": "Select blog"        
+},     
+
+{
+"type": "checkbox",
+"id": "show_featured_date",
+"label": "Show date"
+},
+{
+"type": "checkbox",
+"id": "blog_description",
+"label": "Show description"
+}
+]
+}
+{% endschema %}
+
+{% javascript %}
+$(document).ready(function(){
+     var homeSidefp = $(".home-sidebar-featured-post__inner");
+      homeSidefp.owlCarousel({
+      items:1,
+      dots: false,  
+      autoplay:true,
+      smartSpeed : 1000,
+      navSpeed : 1000,
+         responsive:{
+      0:{
+      items: 1
+      },
+      600:{
+      items:1
+      },
+      700:{
+      items:1
+      },
+      1000:{
+      items: 1
+      }
+      }
+      });
+});
+{% endjavascript %}

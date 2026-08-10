@@ -1,0 +1,51 @@
+<div data-section-id="{{ section.id }}" data-section-type="wide-banner-type-3" class="wide-banner-type-3">  
+  <div class="grid-uniform CollectionItems">    
+     <div class="wrapper">   
+      <div class="wide-banner-type-3-block">
+      {% if section.settings.link_1 != blank %}<a  href="{{ section.settings.link_1 }}">{% endif%}
+      {% if section.settings.image_1 != blank %}
+      <img src="{{ section.settings.image_1 | img_url: 'master' }}" alt="{{ section.settings.title }}" />
+      {% else %}
+     <div style="height:260px;"> {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}</div>
+      {% endif%}           
+      {% if section.settings.link_1 != blank %}  </a>
+      {% endif%}     
+    </div>   
+   </div>
+  </div>
+</div>
+<div class="dt-sc-hr-invisible-small"></div>
+{% schema %}
+{
+"name": "Wide Banner Type",
+"class": "index-section",
+"settings": [
+{
+"type": "image_picker",
+"id": "image_1",
+"label": "Image",
+ "info": "Size: 1920x360"
+},
+{
+"type": "text",
+"id": "title",
+"label": "Alt Text",
+"default": "Featured Banner"
+},
+{
+"type": "url",
+"id": "link_1",
+"label": "Link URL"
+}
+],
+"presets": [
+{
+"name": "Wide Banner Type",
+"category": "Image",
+"blocks": []
+}
+]
+}
+{% endschema %}
+
+

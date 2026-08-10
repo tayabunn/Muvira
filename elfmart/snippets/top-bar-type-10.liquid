@@ -1,0 +1,54 @@
+
+<div class="top_bar top-bar-type-10">    
+  <div class="container">
+    {% if section.settings.header_phone_value != blank or  section.settings.header_mail_value != blank %}
+    <ul class="top_bar_left">
+      {% if section.settings.header_phone_value != blank %}
+      <li><i class="fa fa-phone"></i> {{ section.settings.header_phone_value }}</li>
+      {% endif %}
+      {% if section.settings.header_mail_value != blank %}
+      <li><i class="fa fa-envelope"></i> <a href="mailto:{{ section.settings.header_mail_value }}"> {{ section.settings.header_mail_value }}</a></li>
+      {% endif %}
+    </ul>
+    {% endif %}
+    
+                
+      <div class="customer_account">    
+        {% if shop.customer_accounts_enabled %}
+        <div class="header-account_links list-unstyled">
+          <ul class="inline-list">
+            <li class="init">--My account--</li>
+			
+            {% if customer %}
+            <li>
+              <a href="/account" data-value="value 1">{{ 'layout.customer.account' | t }}</a>
+            </li>
+            <li class="logout-link">
+             {{ 'layout.customer.log_out' | t | customer_logout_link }}
+            </li>
+            {% else %}
+            <li>
+              <a href="/account/login" data-value="value 1">{{ 'layout.customer.log_in' | t }}</a>
+            </li>
+            <li>
+              <a href="/account/register" data-value="value 2">{{ 'layout.customer.create_account' | t }}</a>
+            </li>          
+            {% endif %}  
+          </ul>          
+        </div>
+        {% endif %} 
+                
+          <div class="header_currency">
+            <ul class="tbl-list">                    
+              <li class="currency dropdown-parent uppercase currency-block">
+                {% if section.settings.display_currency %}    
+                {% include 'currencies-switcher' %}
+                {% endif %}
+              </li>
+            </ul>
+          </div>        
+       
+      </div>    
+   
+  </div>
+</div> 
