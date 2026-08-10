@@ -1,3 +1,13 @@
+/* ===== Muvira Logo Size Fix ===== */
+img.normal-logo {
+    max-height: 45px;
+    max-width: 160px;
+    width: auto;
+    height: auto;
+    display: block;
+}
+/* ================================ */
+
 .loading-modal {
     background: #fff url("loading.gif") center 14px no-repeat;
     border: 1px solid rgba(0, 0, 0, 0.15);

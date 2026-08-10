@@ -10,8 +10,8 @@
 {
   "current": {
     "logo_use_image": true,
-    "logo_max_height": "70",
-    "logo_max_width": "450",
+    "logo_max_height": "45",
+    "logo_max_width": "160",
     "favicon_enable": true,
     "preloader_enable": true,
     "animation_enable": true,
