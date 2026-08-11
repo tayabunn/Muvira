@@ -2182,6 +2182,7 @@
       },
       "home-sidebar-bestsellers": {
         "type": "home-sidebar-bestsellers",
+        "custom_css": [],
         "settings": {
           "show_best_products": true,
           "sidebar_bg_color": "#ffffff",
@@ -2430,6 +2431,7 @@
         "settings": {
           "product_grid_bg": "#ffffff",
           "heading_image_need": false,
+          "heading_image": "shopify://shop_images/clothing-on-retail-rack.jpg",
           "title": "Accessories",
           "title_color": "#000000",
           "small_title": "",
@@ -2712,6 +2714,15 @@
               "client_link": ""
             }
           },
+          "image_aDzNXQ": {
+            "type": "Image",
+            "settings": {
+              "client_heading": "#fff",
+              "heading-color": "#000000",
+              "heading-hover-color": "#000000",
+              "client_link": ""
+            }
+          },
           "1512363984815-3": {
             "type": "Image",
             "settings": {
@@ -2744,10 +2755,12 @@
           "1512363984815-0",
           "1512363984815-1",
           "1512363984815-2",
+          "image_aDzNXQ",
           "1512363984815-3",
           "1512363984815-4",
           "1513072786768"
         ],
+        "custom_css": [],
         "settings": {
           "category_bg": "#ffffff",
           "title": "Shop from different categories",
@@ -3023,7 +3036,36 @@
       "1509788971243",
       "1512367992053",
       "1512380515560"
-    ]
+    ],
+    "blocks": {
+      "15683396631634586217": {
+        "type": "shopify://apps/inbox/blocks/chat/841fc607-4181-4ad1-842d-e24d7f8bad6b",
+        "disabled": false,
+        "settings": {
+          "greeting_message": "",
+          "show_featured_products": true,
+          "featured_products": [],
+          "background_color": "#FFFFFF",
+          "font_color": "#000000",
+          "agent_invert_activator_colors": false,
+          "button_color": "#000000",
+          "button_icon": "chat_bubble",
+          "button_text": "chat_with_us",
+          "button_horizontal_position": "bottom_right",
+          "button_vertical_position": "lowest",
+          "agent_inherit_fonts": true,
+          "agent_font": "system_ui_n4",
+          "agent_font_size": 14,
+          "agent_activator_font_size": 13,
+          "agent_border_radius": 16
+        }
+      },
+      "13768625480086291342": {
+        "type": "shopify://apps/forms/blocks/forms/8744a304-fcb1-4347-b211-bb6b4759a76a",
+        "disabled": false,
+        "settings": {}
+      }
+    }
   },
   "presets": {}
 }
