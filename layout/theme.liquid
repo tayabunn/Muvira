@@ -75,7 +75,73 @@
       padding-bottom: 22px !important;
     }
 
-    /* 3. Set area under Red Navigation Bar to Pure White (#ffffff) */
+    /* 4. Top Right Header Account Buttons (Sign In & Register) */
+    .menu_bar_right {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: flex-end !important;
+      gap: 15px !important;
+      float: right !important;
+    }
+    .header-account-btn-wrap {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 10px !important;
+      margin-left: 15px !important;
+      float: none !important;
+    }
+    .header-btn-signin {
+      background-color: #ffffff !important;
+      color: #e50914 !important;
+      border: 1.5px solid #e50914 !important;
+      padding: 8px 18px !important;
+      border-radius: 4px !important;
+      font-weight: 600 !important;
+      font-size: 13px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+      text-decoration: none !important;
+      transition: all 0.3s ease !important;
+      line-height: 1 !important;
+    }
+    .header-btn-signin:hover {
+      background-color: #e50914 !important;
+      color: #ffffff !important;
+      border-color: #e50914 !important;
+    }
+    .header-btn-register {
+      background-color: #e50914 !important;
+      color: #ffffff !important;
+      border: 1.5px solid #e50914 !important;
+      padding: 8px 18px !important;
+      border-radius: 4px !important;
+      font-weight: 600 !important;
+      font-size: 13px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+      text-decoration: none !important;
+      transition: all 0.3s ease !important;
+      line-height: 1 !important;
+    }
+    .header-btn-register:hover {
+      background-color: #c00712 !important;
+      color: #ffffff !important;
+      border-color: #c00712 !important;
+    /* 5. Sticky Navbar Clean Scroll Rule: Remove Cart, Badge, Sign In, and Register from Sticky Navbar */
+    .is-sticky .menu_bar_right,
+    .is-sticky .header_cart,
+    .is-sticky .header-account-btn-wrap,
+    .is-sticky .cart,
+    .header-type-10 .is-sticky .menu_bar_right {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
+
+    /* 3. Completely remove black gap & space under Red Navigation Bar */
     .header-type-10, .site-header, .header-sticky, #header-landing, .sticky-animate,
     .sticky-wrapper, #header-landing-sticky-wrapper, .is-sticky,
     .desktop-megamenu, .nav-bar-mobile, .breadcrumb, .breadcrumb_wrap, #breadcrumb {
@@ -85,6 +151,16 @@
       padding-bottom: 0 !important;
       border: none !important;
       box-shadow: none !important;
+    }
+    .main-content {
+      margin-top: 0 !important;
+      padding-top: 0 !important;
+    }
+    .dt-sc-hr-invisible-small, .dt-sc-hr-invisible-large, .dt-sc-hr-invisible, .dt-sc-hr-invisible-medium {
+      display: none !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      height: 0 !important;
     }
 
     /* Red Navigation Bar & White Menu Links */
@@ -264,10 +340,6 @@
    {% if settings.use_breadcrumb %}
   {% include 'breadcrumb' %}
   {% endif %}
-    {% unless template contains "contact" or template contains "about" %}
-    <div class="dt-sc-hr-invisible-small"></div>
-
-    {% endunless %}
     <main class="main-content">        
       {% unless template contains "contact" or template contains "index" or template contains "about" %}
 

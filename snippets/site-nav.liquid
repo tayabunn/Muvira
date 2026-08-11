@@ -99,22 +99,5 @@
 
     </li>
     {% endfor %}
-
-    <!-- Account Actions inside Red Navigation Bar -->
-    {% if customer %}
-    <li class="nav-account-item">
-      <a href="/account" style="color:#ffffff !important;font-weight:600;"><i class="fa fa-user"></i> My Account</a>
-    </li>
-    <li class="nav-account-item">
-      <a href="/account/logout" style="color:#ffffff !important;"><i class="fa fa-sign-out"></i> Log Out</a>
-    </li>
-    {% else %}
-    <li class="nav-account-item">
-      <a href="/account/login" style="color:#ffffff !important;font-weight:600;display:inline-flex;align-items:center;gap:6px;"><i class="fa fa-sign-in"></i> Sign In</a>
-    </li>
-    <li class="nav-account-item">
-      <a href="/account/register" style="color:#000000 !important;background:#ffffff;padding:6px 14px;border-radius:4px;font-weight:700;display:inline-flex;align-items:center;gap:6px;transition:all 0.3s;"><i class="fa fa-user-plus"></i> Register</a>
-    </li>
-    {% endif %}
   </ul>  
 </div>

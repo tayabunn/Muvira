@@ -129,7 +129,24 @@
                 </li> 
                 {% endif %} 
                 
-                
+                <!-- Sign In and Register Buttons on Top Right Header -->
+                <li class="header-account-btn-wrap">
+                  {% if customer %}
+                  <a href="/account" class="header-btn-signin">
+                    <i class="fa fa-user"></i> Account
+                  </a>
+                  <a href="/account/logout" class="header-btn-register">
+                    <i class="fa fa-sign-out"></i> Log Out
+                  </a>
+                  {% else %}
+                  <a href="/account/login" class="header-btn-signin">
+                    <i class="fa fa-sign-in"></i> Sign In
+                  </a>
+                  <a href="/account/register" class="header-btn-register">
+                    <i class="fa fa-user-plus"></i> Register
+                  </a>
+                  {% endif %}
+                </li>
 
               </ul>
               {% if section.settings.top_promo_image_1 != blank %}
