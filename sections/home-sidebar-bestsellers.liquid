@@ -43,6 +43,11 @@
         
         {% else %}
          {% for i in (1..section.settings.limit) %}
+         {%- assign sidebar_products = "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=200&q=80,https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=200&q=80,https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=200&q=80,https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=200&q=80" | split: "," -%}
+         {%- assign sb_index = i | minus: 1 | modulo: 4 -%}
+         {%- assign sb_img = sidebar_products[sb_index] -%}
+         {%- assign sb_titles = "Minimalist Watch,Running Sneakers,Leather Bag,Wireless Headphones" | split: "," -%}
+         {%- assign sb_title = sb_titles[sb_index] -%}
 
         <li>
           <div class="products  dt-best-seller  wow fadeIn   animated" style="visibility: visible;">
@@ -53,8 +58,7 @@
                 {% endif %}
 
                 <div class="reveal"> 
-                  {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
-                  {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }} 
+                  <img src="{{ sb_img }}" alt="{{ sb_title }}" style="width:100%;height:180px;object-fit:cover;" />
                 </div>
               </a>
               <div class="ImageWrapper">
@@ -71,12 +75,10 @@
             </div>
            
             <div class="product-detail"> 
-               <a href="#" class="grid-link__title">Sample title {{ i }}</a>
-              <span class="spr-badge" id="spr_badge_6529189125" data-rating="0.0"> 
-                <span class="spr-starrating spr-badge-starrating"><i class="spr-icon spr-icon-star-empty" style="color: #f05315;"></i><i class="spr-icon spr-icon-star-empty" style="color: #f05315;"></i><i class="spr-icon spr-icon-star-empty" style="color: #f05315;"></i><i class="spr-icon spr-icon-star-empty" style="color: #f05315;"></i><i class="spr-icon spr-icon-star-empty" style="color: #f05315;"></i></span> <span class="spr-badge-caption"> </span> </span>
+               <a href="#" class="grid-link__title">{{ sb_title }}</a>
               <div class="grid-link__meta">
-                <div class="product_price"> <span class="money" data-currency-usd="$320.00">$0.00</span> </div>
-                <del class="grid-link__sale_price"><span class="money" data-currency-usd="$756.00">$0.00</span></del> </div>
+                <div class="product_price"> <span class="money">${{ i | times: 25 | plus: 49 }}.00</span> </div>
+                <del class="grid-link__sale_price"><span class="money">${{ i | times: 25 | plus: 89 }}.00</span></del> </div>
               
             </div>
           </div>

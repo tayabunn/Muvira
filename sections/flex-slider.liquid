@@ -12,9 +12,10 @@
         {% if block.settings.slideshow_img != blank %}
         <img src="{{ block.settings.slideshow_img | img_url:'master' }}" alt="{{ block.settings.image_alt }}" />
           {% else %}
-               {%- assign placeholder_image_index = forloop.index0 | modulo: 2 | plus: 1 -%}
-                {%- assign placeholder_image = 'lifestyle-' | append: placeholder_image_index -%}
-               <div style="height:550px;"> {{ placeholder_image | placeholder_svg_tag: 'placeholder-svg' }}</div>
+          {%- assign unsplash_slides = "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1920&q=80,https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=1920&q=80,https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=1920&q=80" | split: "," -%}
+          {%- assign slide_index = forloop.index0 | modulo: 3 -%}
+          {%- assign slide_img_url = unsplash_slides[slide_index] -%}
+          <img src="{{ slide_img_url }}" alt="Fashion collection" style="width:100%;height:550px;object-fit:cover;" />
         {% endif %}
         <div class="slide-des" 
              {% if block.settings.text_align_slide == 'center' %}

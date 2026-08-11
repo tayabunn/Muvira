@@ -1,3 +1,9 @@
+{%- assign unsplash_products = "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&q=80,https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&q=80,https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=400&q=80,https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=400&q=80,https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=400&q=80,https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&q=80" | split: "," -%}
+{%- assign raw_idx = i | default: forloop.index | minus: 1 -%}
+{%- assign arr_idx = raw_idx | modulo: 6 -%}
+{%- assign product_img = unsplash_products[arr_idx] -%}
+{%- assign sample_titles = "Minimalist Watch,Running Sneakers,Leather Tote Bag,Wireless Headphones,Silk Scarf,Travel Backpack" | split: "," -%}
+{%- assign sample_title = sample_titles[arr_idx] -%}
 
 <li class="swiper-slide">
   <div class="products">
@@ -11,17 +17,16 @@
         </div>{% endif %}
 
         <div class="reveal"> 
-          {% capture current %}{% cycle 1, 2, 3, 4 %}{% endcapture %}
-          {{ 'product-apparel-' | append: current | placeholder_svg_tag: 'placeholder-svg' }} 
+          <img src="{{ product_img }}" alt="{{ sample_title }}" style="width:100%;height:260px;object-fit:cover;" />
         </div>
       </a>
 
     </div>
     <div class="product-detail {% if section.settings.collection == blank %} empty_collections {% endif %}"> 
-      <a href="#" class="grid-link__title">Sample title {{ i }}</a>            
+      <a href="#" class="grid-link__title">{{ sample_title }}</a>            
       <div class="grid-link__meta">
-        <div class="product_price"> <span class="money" data-currency-usd="$320.00">$0.00</span> </div>
-        <del class="grid-link__sale_price"><span class="money" data-currency-usd="$756.00">$0.00</span></del> </div>              
+        <div class="product_price"> <span class="money" data-currency-usd="${{ i | times: 25 | plus: 49 }}.00">${{ i | times: 25 | plus: 49 }}.00</span> </div>
+        <del class="grid-link__sale_price"><span class="money" data-currency-usd="${{ i | times: 25 | plus: 89 }}.00">${{ i | times: 25 | plus: 89 }}.00</span></del> </div>              
     </div>
   </div>
 </li>

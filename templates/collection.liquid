@@ -24,7 +24,7 @@
           {% include 'tool-grid' %}          
           <div class="products-grid-view">
           {% if collection.products.size > 0 %}      
-          <ul>
+          <ul class="grid-uniform">
             {% case settings.collection_grid %}
             {% when '2' %}
             {%- assign grid_item_width = 'wide--one-half post-large--one-half large--one-half medium--one-half small-grid__item' -%}
@@ -41,35 +41,14 @@
             {% endcase %}
             {% for product in collection.products %}
             {% include 'product-grid-item' %}
-            {% else %}
-            {% if shop.products_count == 0 %}
-            {% unless emptyState %}
-            {{ 'theme-onboarding.css' | global_asset_url | stylesheet_tag }}
-            {% assign emptyState = true %}
-            {% endunless %}
-
-            <div class="grid__item">
-              <div class="helper-section">
-                <div class="helper-note">
-                  <span class="helper-icon"></span>
-                  <h3>{{ 'home_page.onboarding.modal_title' | t }}</h3>
-                  <p>{{ 'home_page.onboarding.no_products_collection' | t }}</p>
-                  <p><a class="admin-btn-primary" href="/admin/products/new">{{ 'home_page.onboarding.add_product' | t }}</a></p>
-                </div>
-              </div>
-            </div>
-            {% else %}
-            <div class="grid__item">
-              <p><em>{{ 'collections.general.no_matches' | t }}</em></p>
-            </div>
-            {% endif %}
-
             {% endfor %}
           </ul>
           {% else %}
-          <div class="grid__item">
-            <p><em>{{ 'home_page.onboarding.no_products_html' | t }}</em></p>
-          </div>
+          <ul class="grid-uniform">
+            {% for i in (1..8) %}
+            {% include 'empty-row' %}
+            {% endfor %}
+          </ul>
           {% endif %}
           </div>
           {% if paginate.pages > 1 %}

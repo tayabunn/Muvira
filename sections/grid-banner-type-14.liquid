@@ -6,13 +6,15 @@
       {% if section.settings.image_1 != blank %}
       <img src="{{ section.settings.image_1 | img_url: 'master' }}" alt="{{ section.settings.title_1 }}" />
       {% else %}
-    <div style="width:670px;height:235px;">  {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}</div>
+      <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&q=80" alt="New Season Collection" style="width:100%;max-height:235px;object-fit:cover;" />
       {% endif%}           
       {% if section.settings.link_1 != blank %}  </a>
       {% endif%}
       <div class="featured-content">       
         {% if section.settings.title_1 != blank %}
         <h2 style="color:{{ section.settings.title_1_color }}">{{ section.settings.title_1 }}</h2>
+        {% else %}
+        <h2>New Season</h2>
         {% endif %}
         {% if section.settings.text_1 != blank %}
         <p style="color:{{ section.settings.text_1_color }}">{{ section.settings.text_1}}</p>    
@@ -27,11 +29,9 @@
       {% if section.settings.image_2 != blank %}
       <img src="{{ section.settings.image_2 | img_url: 'master' }}" alt="{{ section.settings.title_2 }}" />
       {% else %}
-
-      <div style="width:670px;height:235px;">  {{ 'collection-2' | placeholder_svg_tag: 'placeholder-svg' }}</div>
+      <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80" alt="Exclusive Summer Style" style="width:100%;max-height:235px;object-fit:cover;" />
       {% endif%}           
       {% if section.settings.link_2 != blank %}  </a>
-
       {% endif%}
       <div class="featured-content">     
         {% if section.settings.offer != blank or section.settings.offer_text != blank  %}

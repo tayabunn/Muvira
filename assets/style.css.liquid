@@ -1,3 +1,122 @@
+/* ============================================================
+   Montserrat & Icon Font Declarations
+   ============================================================ */
+@font-face {
+  font-family: 'montserratregular';
+  src: url('{{ 'montserrat-regular-webfont.woff2' | asset_url }}') format('woff2'),
+       url('{{ 'montserrat-regular-webfont.woff' | asset_url }}') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'montserratbold';
+  src: url('{{ 'montserrat-bold-webfont.woff2' | asset_url }}') format('woff2'),
+       url('{{ 'montserrat-bold-webfont.woff' | asset_url }}') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'montserratsemi_bold';
+  src: url('{{ 'montserrat-semibold-webfont.woff2' | asset_url }}') format('woff2'),
+       url('{{ 'montserrat-semibold-webfont.woff' | asset_url }}') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'montserratblack';
+  src: url('{{ 'montserrat-black-webfont.woff2' | asset_url }}') format('woff2'),
+       url('{{ 'montserrat-black-webfont.woff' | asset_url }}') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'montserratextra_bold';
+  src: url('{{ 'montserrat-extrabold-webfont.woff2' | asset_url }}') format('woff2'),
+       url('{{ 'montserrat-extrabold-webfont.woff' | asset_url }}') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'montserrathairline';
+  src: url('{{ 'montserrat-hairline-webfont.woff2' | asset_url }}') format('woff2'),
+       url('{{ 'montserrat-hairline-webfont.woff' | asset_url }}') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'montserratultra_light';
+  src: url('{{ 'montserrat-ultralight-webfont.woff2' | asset_url }}') format('woff2'),
+       url('{{ 'montserrat-ultralight-webfont.woff' | asset_url }}') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'montserratlight';
+  src: url('{{ 'montserrat-light-webfont.woff2' | asset_url }}') format('woff2'),
+       url('{{ 'montserrat-light-webfont.woff' | asset_url }}') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'simple-line-icons';
+  src: url('{{ 'Simple-Line-Icons.eot' | asset_url }}');
+  src: url('{{ 'Simple-Line-Icons.eot' | asset_url }}#iefix') format('embedded-opentype'),
+       url('{{ 'Simple-Line-Icons.woff2' | asset_url }}') format('woff2'),
+       url('{{ 'Simple-Line-Icons.woff' | asset_url }}') format('woff'),
+       url('{{ 'Simple-Line-Icons.ttf' | asset_url }}') format('truetype'),
+       url('{{ 'Simple-Line-Icons.svg' | asset_url }}#simple-line-icons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'icomoon';
+  src: url('{{ 'icomoon.eot' | asset_url }}');
+  src: url('{{ 'icomoon.eot' | asset_url }}#iefix') format('embedded-opentype'),
+       url('{{ 'icomoon.woff' | asset_url }}') format('woff'),
+       url('{{ 'icomoon.ttf' | asset_url }}') format('truetype'),
+       url('{{ 'icomoon.svg' | asset_url }}#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('{{ 'fontawesome-webfont.eot' | asset_url }}');
+  src: url('{{ 'fontawesome-webfont.eot' | asset_url }}#iefix') format('embedded-opentype'),
+       url('{{ 'fontawesome-webfont.woff2' | asset_url }}') format('woff2'),
+       url('{{ 'fontawesome-webfont.woff' | asset_url }}') format('woff'),
+       url('{{ 'fontawesome-webfont.ttf' | asset_url }}') format('truetype'),
+       url('{{ 'fontawesome-webfont.svg' | asset_url }}#fontawesomeregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Ensure all Simple Line Icons and .icons helper classes use the icon font */
+.icons,
+[class^="icon-"],
+[class*=" icon-"] {
+  font-family: 'simple-line-icons' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  display: inline-block;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Absolute pure white background for the entire website */
+html, body, .wrapper-container, #PageContainer, .main-content, 
+.container-bg, .grid-uniform, .site-header, .header-type-10, 
+.sticky-animate, .sticky-wrapper, #header-landing-sticky-wrapper, .is-sticky,
+.homepage_sidebar, .widget, .main-slideshow, 
+.home-product-grid-type-12-b, .category-section, .support-block-type-4,
+.collection-products, .products-grid-view {
+  background-color: #ffffff !important;
+  background-image: none !important;
+}
+
 .loading-modal {
     background: #fff url("loading.gif") center 14px no-repeat;
     border: 1px solid rgba(0, 0, 0, 0.15);
@@ -1154,31 +1273,31 @@ ul.item-swatch.swatch_count { position:absolute;top:-40px;left:0;right:0; }
 
 @font-face {
     font-family: 'futura_md_btmedium';
-    src: url('16020_futuram-webfont.woff2') format('woff2'), url('16020_futuram-webfont.woff') format('woff');
+    src: url('{{ '16020_futuram-webfont.woff2' | asset_url }}') format('woff2'), url('{{ '16020_futuram-webfont.woff' | asset_url }}') format('woff');
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
     font-family: 'futura_bk_btbook';
-    src: url('futura_bk_bt_book-webfont.woff2') format('woff2'), url('futura_bk_bt_book-webfont.woff') format('woff');
+    src: url('{{ 'futura_bk_bt_book-webfont.woff2' | asset_url }}') format('woff2'), url('{{ 'futura_bk_bt_book-webfont.woff' | asset_url }}') format('woff');
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
     font-family: 'futura_md_btbold';
-    src: url('tt0144m-webfont.woff2') format('woff2'), url('tt0144m-webfont.woff') format('woff');
+    src: url('{{ 'tt0144m-webfont.woff2' | asset_url }}') format('woff2'), url('{{ 'tt0144m-webfont.woff' | asset_url }}') format('woff');
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
     font-family: 'futura-mediumregular';
-    src: url('ufonts.com_futura-medium-webfont.woff2') format('woff2'), url('ufonts.com_futura-medium-webfont.woff') format('woff');
+    src: url('{{ 'ufonts.com_futura-medium-webfont.woff2' | asset_url }}') format('woff2'), url('{{ 'ufonts.com_futura-medium-webfont.woff' | asset_url }}') format('woff');
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
     font-family: 'futura_ltbook';
-    src: url('ufonts.com_futura-lt-book-webfont.woff2') format('woff2'), url('ufonts.com_futura-lt-book-webfont.woff') format('woff');
+    src: url('{{ 'ufonts.com_futura-lt-book-webfont.woff2' | asset_url }}') format('woff2'), url('{{ 'ufonts.com_futura-lt-book-webfont.woff' | asset_url }}') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -1436,8 +1555,8 @@ section header:after {
 
 @font-face {
   font-family: 'simple-line-icons';
-  src: url('Simple-Line-Icons.eot?v=2.4.0');
-  src: url('Simple-Line-Icons.eot?v=2.4.0#iefix') format('embedded-opentype'), url('Simple-Line-Icons.woff2?v=2.4.0') format('woff2'), url('Simple-Line-Icons.ttf?v=2.4.0') format('truetype'), url('Simple-Line-Icons.woff?v=2.4.0') format('woff'), url('Simple-Line-Icons.svg?v=2.4.0#simple-line-icons') format('svg');
+  src: url('{{ 'Simple-Line-Icons.eot' | asset_url }}');
+  src: url('{{ 'Simple-Line-Icons.eot' | asset_url }}#iefix') format('embedded-opentype'), url('{{ 'Simple-Line-Icons.woff2' | asset_url }}') format('woff2'), url('{{ 'Simple-Line-Icons.ttf' | asset_url }}') format('truetype'), url('{{ 'Simple-Line-Icons.woff' | asset_url }}') format('woff'), url('{{ 'Simple-Line-Icons.svg' | asset_url }}#simple-line-icons') format('svg');
   font-weight: normal;
   font-style: normal;
 }

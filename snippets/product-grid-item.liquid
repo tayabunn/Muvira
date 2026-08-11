@@ -41,6 +41,7 @@
         </span>
         {% endif %}   
         <div class="ImageOverlayCa"></div>
+         {% if product.featured_image != blank %}
          {% if product.images.size > 1 %}
         <div class="reveal"> 
           <span class="product-additional">   
@@ -52,7 +53,9 @@
         </div>      
         {% else %}
         <img src="{{ product.featured_image.src | img_url: 'master' }}" class="featured-image" alt="{{ product.featured_image.alt | escape }}">
-          
+        {% endif %}
+        {% else %}
+        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&q=80" class="featured-image" alt="Product Image" style="width:100%;height:260px;object-fit:cover;">
         {% endif %}
       </a>
       <div class="product_right_tag  {% if on_sale %} offer_exist {% endif %}">

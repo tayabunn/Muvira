@@ -15,31 +15,6 @@
 
 
     <div class="customer_account">  
-      <div class="list-unstyled">
-        {% if shop.customer_accounts_enabled %} 
-        <li class="init dt-sc-toggle">{{ 'layout.customer.account' | t }}</li>
-        <div class="header-account_links list-unstyled dt-sc-toggle-content">
-          <ul class="inline-list"> 
-            {% if customer %}
-            <li>
-              <a href="/account" data-value="value 1"><i class="icon-user-following"></i>{{ 'layout.customer.account' | t }}</a>
-            </li>
-            <li class="logout-link">
-              <i class="icon-user-unfollow"></i> {{ 'layout.customer.log_out' | t | customer_logout_link }}
-            </li>
-            {% else %}
-            <li>
-              <a href="/account/login" data-value="value 1"><i class="icon-login"></i>{{ 'layout.customer.log_in' | t }}</a>
-            </li>
-            <li>
-              <a href="/account/register" data-value="value 2"><i class="icon-user"></i>{{ 'layout.customer.create_account' | t }}</a>
-            </li>          
-            {% endif %}  
-
-          </ul>          
-        </div>
-        {% endif %} 
-      </div>
       {% if settings.display_currency %}   
       <div class="header_currency">
         <ul class="tbl-list">                    

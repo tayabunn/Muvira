@@ -1,38 +1,46 @@
-<div class="container">
-<div class="grid">
+<div class="container" style="max-width:550px;margin:50px auto;padding:0 15px;">
+  <div style="background:#ffffff;border:1px solid #e0e0e0;border-radius:12px;padding:40px 35px;box-shadow:0 10px 30px rgba(0,0,0,0.06);text-align:center;">
+    
+    <!-- Header Tabs -->
+    <div style="display:flex;border-bottom:2px solid #f0f0f0;margin-bottom:30px;">
+      <a href="/account/login" style="flex:1;padding:12px;text-align:center;font-size:16px;font-weight:600;color:#888;text-decoration:none;border-bottom:2px solid transparent;">Sign In</a>
+      <a href="/account/register" style="flex:1;padding:12px;text-align:center;font-size:16px;font-weight:700;color:#000000;text-decoration:none;border-bottom:3px solid #e50914;margin-bottom:-2px;">Create Account</a>
+    </div>
 
-  <div class="grid__item small--text-center">
+    <h2 style="font-size:24px;font-weight:700;color:#000;margin-bottom:8px;">Join Muvira</h2>
+    <p style="color:#666;font-size:14px;margin-bottom:25px;">Create an account for faster checkout & order tracking.</p>
 
-   
-<div class="register-form">
-    {% comment %}
-      This form must use 'create_customer'
-    {% endcomment %}
-    {% form 'create_customer' %}
+    <div class="register-form">
+      {% form 'create_customer' %}
+        {{ form.errors | default_errors }}
 
-      {{ form.errors | default_errors }}
+        <div style="margin-bottom:15px;text-align:left;">
+          <label for="FirstName" style="font-size:13px;font-weight:600;color:#333;display:block;margin-bottom:5px;">First Name</label>
+          <input type="text" name="customer[first_name]" id="FirstName" placeholder="John" {% if form.first_name %}value="{{ form.first_name }}"{% endif %} autocapitalize="words" autofocus style="width:100%;padding:12px 15px;border:1px solid #ccc;border-radius:6px;font-size:14px;outline:none;">
+        </div>
 
-      <label for="FirstName" class="label--hidden">{{ 'customer.register.first_name' | t }}</label>
-      <input type="text" name="customer[first_name]" id="FirstName" placeholder="{{ 'customer.register.first_name' | t }}" {% if form.first_name %}value="{{ form.first_name }}"{% endif %} autocapitalize="words" autofocus>
+        <div style="margin-bottom:15px;text-align:left;">
+          <label for="LastName" style="font-size:13px;font-weight:600;color:#333;display:block;margin-bottom:5px;">Last Name</label>
+          <input type="text" name="customer[last_name]" id="LastName" placeholder="Doe" {% if form.last_name %}value="{{ form.last_name }}"{% endif %} autocapitalize="words" style="width:100%;padding:12px 15px;border:1px solid #ccc;border-radius:6px;font-size:14px;outline:none;">
+        </div>
 
-      <label for="LastName" class="label--hidden">{{ 'customer.register.last_name' | t }}</label>
-      <input type="text" name="customer[last_name]" id="LastName" placeholder="{{ 'customer.register.last_name' | t }}" {% if form.last_name %}value="{{ form.last_name }}"{% endif %} autocapitalize="words">
+        <div style="margin-bottom:15px;text-align:left;">
+          <label for="Email" style="font-size:13px;font-weight:600;color:#333;display:block;margin-bottom:5px;">Email Address</label>
+          <input type="email" name="customer[email]" id="Email" placeholder="yourname@example.com" {% if form.errors contains "email" %} class="error"{% elsif form.email %} value="{{ form.email }}"{% endif %} autocorrect="off" autocapitalize="off" style="width:100%;padding:12px 15px;border:1px solid #ccc;border-radius:6px;font-size:14px;outline:none;">
+        </div>
 
-      <label for="Email" class="label--hidden">{{ 'customer.register.email' | t }}</label>
-      <input type="email" name="customer[email]" id="Email" placeholder="{{ 'customer.register.email' | t }}" {% if form.errors contains "email" %} class="error"{% elsif form.email %} value="{{ form.email }}"{% endif %} autocorrect="off" autocapitalize="off">
+        <div style="margin-bottom:25px;text-align:left;">
+          <label for="CreatePassword" style="font-size:13px;font-weight:600;color:#333;display:block;margin-bottom:5px;">Password</label>
+          <input type="password" name="customer[password]" id="CreatePassword" placeholder="••••••••" {% if form.errors contains "password" %} class="error"{% endif %} style="width:100%;padding:12px 15px;border:1px solid #ccc;border-radius:6px;font-size:14px;outline:none;">
+        </div>
 
-      <label for="CreatePassword" class="label--hidden">{{ 'customer.register.password' | t }}</label>
-      <input type="password" name="customer[password]" id="CreatePassword" placeholder="{{ 'customer.register.password' | t }}" {% if form.errors contains "password" %} class="error"{% endif %}>
+        <input type="submit" value="Register Now" style="width:100%;background:#e50914;color:#ffffff;border:none;padding:14px;font-size:15px;font-weight:700;border-radius:6px;cursor:pointer;transition:background 0.3s;margin-bottom:15px;">
 
-      <p>
-        <input type="submit" value="{{ 'customer.register.submit' | t }}" class="btn">
-      </p>
-      <a href="{{ shop.url }}">{{ 'customer.register.cancel' | t }}</a>
-
-    {% endform %}
+        <p style="font-size:14px;color:#666;margin:0;">
+          Already have an account? <a href="/account/login" style="color:#e50914;font-weight:600;text-decoration:none;">Sign In here</a>
+        </p>
+      {% endform %}
+    </div>
 
   </div>
-
-</div>
-</div>
 </div>
