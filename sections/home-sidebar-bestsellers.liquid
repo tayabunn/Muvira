@@ -9,8 +9,7 @@
       <ul class="no-bullets top-products">
        {% for product in collections[section.settings.bestseller].products limit: section.settings.limit %}
         <li class="products"> 
-          <span class="top_product_count">0{{ forloop.index }}</span>
-          <div class="top-products-detail product-detail grid__item">            
+          <div class="top-products-detail product-detail">            
             <a class="grid-link__title" href="{{ product.url | within: collection }}"> {{ product.title }} </a>            
             <div class="top-product-prices grid-link__meta">
               
@@ -35,7 +34,7 @@
            
           
           {% if product.images.size > 0 %}            
-          <a class="thumb grid__item" href="{{ product.url | within: collection }}">                  
+          <a class="thumb" href="{{ product.url | within: collection }}">                  
             <img alt="featured product" src="{{ product.featured_image | product_img_url: 'small' }}">                                              
           </a>
           {% endif %} 
@@ -43,43 +42,36 @@
         
         {% else %}
          {% for i in (1..section.settings.limit) %}
-         {%- assign sidebar_products = "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=200&q=80,https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=200&q=80,https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=200&q=80,https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=200&q=80" | split: "," -%}
+         {%- assign sidebar_products = "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&auto=format&fit=crop&q=80,https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&auto=format&fit=crop&q=80,https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&auto=format&fit=crop&q=80,https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&auto=format&fit=crop&q=80" | split: "," -%}
          {%- assign sb_index = i | minus: 1 | modulo: 4 -%}
          {%- assign sb_img = sidebar_products[sb_index] -%}
          {%- assign sb_titles = "Minimalist Watch,Running Sneakers,Leather Bag,Wireless Headphones" | split: "," -%}
+         {%- assign sb_prices = "$0.60,$0.80,$1.00,$1.21" | split: "," -%}
+         {%- assign sb_compares = "$0.92,$1.13,$1.33,$1.53" | split: "," -%}
          {%- assign sb_title = sb_titles[sb_index] -%}
+         {%- assign sb_price = sb_prices[sb_index] -%}
+         {%- assign sb_compare = sb_compares[sb_index] -%}
 
         <li>
-          <div class="products  dt-best-seller  wow fadeIn   animated" style="visibility: visible;">
+          <div class="products dt-best-seller wow fadeIn animated" style="visibility: visible;">
             <div class="product-container">
               <a href="#" class="grid-link"> 
                 {% if forloop.index == 3 %}
                 <span class="badge badge--sale"> <span class="gift-tag badge__text">Sale</span> </span>
                 {% endif %}
 
-                <div class="reveal"> 
-                  <img src="{{ sb_img }}" alt="{{ sb_title }}" style="width:100%;height:180px;object-fit:cover;" />
+                <div class="reveal" style="aspect-ratio: 1 / 1; width: 100%; overflow: hidden;"> 
+                  <img src="{{ sb_img }}" alt="{{ sb_title }}" style="width:100%;height:100%;aspect-ratio:1/1;object-fit:cover;" />
                 </div>
               </a>
-              <div class="ImageWrapper">
-                <div class="product-button">
-                  <a href="#" id="party-wear-heel" class="quick-view-text"> 
-                  <i class="fa fa-expand" aria-hidden="true"></i> 
-                  </a>
-                  <form action="#" method="post" class="variants clearfix" id="cart-form-6529189125">
-                <input type="hidden" name="id" value="21661289093">
-                <a href="#" class="add-cart-btn"><i class="fa fa-shopping-cart"></i> </a>
-              </form>
-                  <a href="/account/login" class="wishlist"><i class="fa fa-heart"></i></a> </div>
-              </div>
             </div>
            
             <div class="product-detail"> 
-               <a href="#" class="grid-link__title">{{ sb_title }}</a>
+              <a href="#" class="grid-link__title">{{ sb_title }}</a>
               <div class="grid-link__meta">
-                <div class="product_price"> <span class="money">${{ i | times: 25 | plus: 49 }}.00</span> </div>
-                <del class="grid-link__sale_price"><span class="money">${{ i | times: 25 | plus: 89 }}.00</span></del> </div>
-              
+                <div class="product_price"><span class="money">{{ sb_price }}</span></div>
+                <del class="grid-link__sale_price"><span class="money">{{ sb_compare }}</span></del>
+              </div>
             </div>
           </div>
         </li>

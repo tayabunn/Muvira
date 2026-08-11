@@ -139,6 +139,272 @@
       visibility: hidden !important;
       opacity: 0 !important;
       pointer-events: none !important;
+    /* 6. Universal 1:1 Square Product Image Container & Fit Rules (General) */
+    .main-content .products .product-container .reveal,
+    .main-content .products .product-container .grid-link,
+    .main-content .products .reveal,
+    .main-content .grid-link .reveal {
+      aspect-ratio: 1 / 1 !important;
+      width: 100% !important;
+      overflow: hidden !important;
+      display: block !important;
+    }
+    .main-content .products .featured-image,
+    .main-content .products .reveal img,
+    .main-content .products .product-container img,
+    .main-content .products img.hidden-feature_img {
+      aspect-ratio: 1 / 1 !important;
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      object-position: center !important;
+      display: block !important;
+    }
+
+    /* 7. SCOPED CATEGORIES SIDEBAR ALIGNMENT (.homepage_sidebar ONLY) */
+    .homepage_sidebar_column,
+    .homepage_sidebar {
+      width: 100% !important;
+      padding-left: 0 !important;
+      margin-left: 0 !important;
+      box-sizing: border-box !important;
+    }
+    .homepage_sidebar .widget {
+      float: none !important;
+      width: 100% !important;
+      padding-left: 0 !important;
+      padding-right: 10px !important;
+      padding-top: 15px !important;
+      padding-bottom: 15px !important;
+      margin-left: 0 !important;
+      margin-bottom: 24px !important;
+      box-sizing: border-box !important;
+      background-color: #ffffff !important;
+    }
+    /* Eliminate huge gap between Category widget and Product list widget & force 0px left padding */
+    .homepage_sidebar .widget.widget_product_categories {
+      margin-bottom: 0 !important;
+      padding-bottom: 10px !important;
+      padding-left: 0 !important;
+      margin-left: 0 !important;
+    }
+    .homepage_sidebar .widget.widget_top_rated_products,
+    .homepage_sidebar .home-sidebar-bestsellers .widget {
+      margin-top: 0 !important;
+      padding-top: 10px !important;
+      padding-left: 0 !important;
+      margin-left: 0 !important;
+    }
+
+    /* Heading "CATEGORIES" & Red Underline */
+    .homepage_sidebar .widget h4 {
+      margin: 0 0 16px 0 !important;
+      padding: 0 !important;
+      float: none !important;
+      width: 100% !important;
+      text-align: left !important;
+    }
+    .homepage_sidebar .widget h4 span {
+      display: block !important;
+      width: 100% !important;
+      padding: 0 0 12px 0 !important;
+      margin: 0 !important;
+      float: none !important;
+      border-bottom: 2px solid #e50914 !important;
+      font-size: 16px !important;
+      font-weight: 700 !important;
+      text-transform: uppercase !important;
+      letter-spacing: 0.5px !important;
+      color: #000000 !important;
+      box-sizing: border-box !important;
+      text-align: left !important;
+    }
+
+    /* Category Links (Home, Catalog, Contact) & (0) counts */
+    .homepage_sidebar ul.product-categories,
+    .homepage_sidebar ul.dt-sc-toggle-frame-set {
+      list-style: none !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      width: 100% !important;
+    }
+    .homepage_sidebar ul.product-categories li.cat-item {
+      float: none !important;
+      width: 100% !important;
+      margin: 0 0 14px 0 !important;
+      padding: 0 !important;
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+    }
+    .homepage_sidebar ul.product-categories li.cat-item:last-child {
+      margin-bottom: 0 !important;
+    }
+    .homepage_sidebar ul.product-categories li.cat-item i {
+      display: none !important;
+    }
+    .homepage_sidebar ul.product-categories li.cat-item a {
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      width: 100% !important;
+      font-size: 14px !important;
+      font-weight: 600 !important;
+      color: #333333 !important;
+      text-decoration: none !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      text-align: left !important;
+    }
+    .homepage_sidebar ul.product-categories li.cat-item a span {
+      float: none !important;
+      margin-left: auto !important;
+      color: #666666 !important;
+      font-weight: 400 !important;
+    }
+
+    /* Product List Layout inside Sidebar (Text on Left, Image on Right) */
+    .homepage_sidebar ul.no-bullets.top-products,
+    .homepage_sidebar ul.top-products {
+      list-style: none !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      width: 100% !important;
+    }
+    .homepage_sidebar .home-sidebar-bestsellers .top-products li,
+    .homepage_sidebar .top-products li {
+      float: none !important;
+      width: 100% !important;
+      margin-bottom: 20px !important;
+      padding: 0 !important;
+    }
+    .homepage_sidebar .products.dt-best-seller,
+    .homepage_sidebar .products {
+      display: flex !important;
+      flex-direction: row-reverse !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      gap: 15px !important;
+      width: 100% !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      box-sizing: border-box !important;
+    }
+
+    .homepage_sidebar .top_product_count,
+    .homepage_sidebar span.top_product_count {
+      display: none !important;
+      width: 0 !important;
+      height: 0 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      flex: 0 0 0px !important;
+    }
+
+    /* Text Detail Container - EXACT FLUSH LEFT ALIGNMENT MATCHING CATEGORIES */
+    .homepage_sidebar .products .product-detail,
+    .homepage_sidebar .home-sidebar-bestsellers .top-products-detail {
+      flex: 1 1 auto !important;
+      width: auto !important;
+      float: none !important;
+      text-align: left !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: center !important;
+      align-items: flex-start !important;
+    }
+    .homepage_sidebar .products .grid-link__title {
+      font-size: 14px !important;
+      font-weight: 700 !important;
+      color: #000000 !important;
+      text-decoration: none !important;
+      margin: 0 0 4px 0 !important;
+      padding: 0 !important;
+      line-height: 1.3 !important;
+      display: block !important;
+      text-align: left !important;
+    }
+    .homepage_sidebar .products .grid-link__meta {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      justify-content: center !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      text-align: left !important;
+    }
+    .homepage_sidebar .products .product_price,
+    .homepage_sidebar .products .grid-link__org_price {
+      font-size: 14px !important;
+      font-weight: 700 !important;
+      color: #000000 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      text-align: left !important;
+      display: block !important;
+    }
+    .homepage_sidebar .products del.grid-link__sale_price,
+    .homepage_sidebar .products del {
+      font-size: 12px !important;
+      color: #888888 !important;
+      margin-top: 2px !important;
+      padding: 0 !important;
+      text-align: left !important;
+      display: block !important;
+    }
+
+    /* Image Container - Slightly Wider 95px Square Image */
+    .homepage_sidebar .products .product-container,
+    .homepage_sidebar .home-sidebar-bestsellers .thumb {
+      flex: 0 0 95px !important;
+      width: 95px !important;
+      height: 95px !important;
+      aspect-ratio: 1 / 1 !important;
+      float: none !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      position: relative !important;
+      overflow: hidden !important;
+      border-radius: 4px !important;
+    }
+    .homepage_sidebar .products .product-container .reveal,
+    .homepage_sidebar .products .product-container a.grid-link {
+      width: 100% !important;
+      height: 100% !important;
+      aspect-ratio: 1 / 1 !important;
+      display: block !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+    .homepage_sidebar .products .product-container img,
+    .homepage_sidebar .products .reveal img,
+    .homepage_sidebar .home-sidebar-bestsellers .thumb img {
+      width: 100% !important;
+      height: 100% !important;
+      aspect-ratio: 1 / 1 !important;
+      object-fit: cover !important;
+      object-position: center !important;
+      display: block !important;
+    }
+    .homepage_sidebar .products .badge--sale {
+      position: absolute !important;
+      top: 4px !important;
+      left: 4px !important;
+      z-index: 5 !important;
+      background-color: #e50914 !important;
+      color: #ffffff !important;
+      font-size: 9px !important;
+      font-weight: 700 !important;
+      padding: 2px 5px !important;
+      border-radius: 2px !important;
+      text-transform: uppercase !important;
+      line-height: 1 !important;
+    }
+    .homepage_sidebar .products .ImageWrapper,
+    .homepage_sidebar .products .product-button {
+      display: none !important;
     }
 
     /* 3. Completely remove black gap & space under Red Navigation Bar */
@@ -349,8 +615,8 @@
 
         <div class="grid-uniform">
           {% if settings.homepage_sidebar %}
-          <div class="grid__item wide--one-quarter post-large--one-quarter large--one-quarter">
-            <div class="homepage_sidebar">
+          <div class="grid__item homepage_sidebar_column wide--one-quarter post-large--one-quarter large--one-quarter" style="padding-left: 0 !important; margin-left: 0 !important;">
+            <div class="homepage_sidebar" style="padding-left: 0 !important; margin-left: 0 !important;">
               {% section 'home-sidebar-category' %}
               {% section 'home-sidebar-bestsellers' %} 
               {% section 'home-sidebar-deals' %} 

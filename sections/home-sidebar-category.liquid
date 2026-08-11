@@ -16,7 +16,7 @@
     <ul class="product-categories dt-sc-toggle-frame-set">
       {% for link in linklists[sidebar_linklist].links %}       
       <li class="cat-item cat-item-39 cat-parent">
-        <i></i><a href="{{ link.url }}">{{ link.title | escape }}  <span>{% if link.object.all_products_count > 0 %}({{ link.object.all_products_count }}) {% else %}(0){% endif %}</span></a> 
+        <a href="{{ link.url }}">{{ link.title | escape }} <span>{% if link.object.all_products_count > 0 %}({{ link.object.all_products_count }}){% else %}(0){% endif %}</span></a> 
       </li>        
       {% endfor %}
     </ul>
